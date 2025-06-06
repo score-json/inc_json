@@ -30,3 +30,20 @@ jobs:
         with:
           pr-number: ${{ github.event.number }}
           base-branch: ${{ github.event.pull_request.base.ref }}
+          clang-tidy:
+
+  clang-tidy:
+    name: Clang-Tidy Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Clang
+        run: sudo apt-get update && sudo apt-get install -y clang-16 clang-tidy-16
+      - name: Run Clang-Tidy
+        run: |
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          cd ..
+          clang-tidy-16 --fix-errors -p build $(find . -name '*.cpp')
