@@ -40,10 +40,13 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up Clang
         run: sudo apt-get update && sudo apt-get install -y clang-16 clang-tidy-16
+      - name: Set up Bazel
+        run: |
+          wget https://github.com/bazelbuild/bazelisk/releases/download/v1.12.0/bazelisk-linux-amd64
+          chmod +x bazelisk-linux-amd64
+          sudo mv bazelisk-linux-amd64 /usr/local/bin/bazel
+      - name: Run Bazel Build
+        run: bazel build --compile_commands=compile_commands.json //...
       - name: Run Clang-Tidy
         run: |
-          mkdir build
-          cd build
-          cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-          cd ..
-          clang-tidy-16 --fix-errors -p build $(find . -name '*.cpp')
+          clang-tidy-16 --fix-errors -p . $(find . -name '*.cpp')
