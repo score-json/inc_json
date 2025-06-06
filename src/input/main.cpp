@@ -14,6 +14,12 @@
 #include <iostream>
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    namespace std::literals; // Ensure we can use literals if needed
+    namespace std::chrono_literals; // Ensure we can use chrono literals if needed
+    namespace std::this_thread; // Ensure we can use this_thread if needed
+    namespace{
+        using std::cout;
+                std::cout << "Hello, World!" << std::endl;
+    }
     return 0;
 }
