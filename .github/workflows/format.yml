@@ -28,9 +28,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y golang
-          export PATH=$PATH:/usr/local/go/bin
+          echo "export PATH=$PATH:/usr/local/go/bin" >> $GITHUB_ENV
+          echo "export PATH=$PATH:$(go env GOPATH)/bin" >> $GITHUB_ENV
           go install github.com/bazelbuild/buildtools/buildifier@latest
-          export PATH=$PATH:$(go env GOPATH)/bin
       - name: Auto-format Bazel/Starlark files
         run: |
           find . -name '*.bzl' -o -name 'BUILD' -o -name 'MODULE.bazel' | xargs buildifier
