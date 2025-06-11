@@ -1,3 +1,5 @@
+load("@hedron_compile_commands//:refresh_compile_commands.bzl", "refresh_compile_commands")
+
 # *******************************************************************************
 # Copyright (c) 2025 Contributors to the Eclipse Foundation
 #
@@ -15,7 +17,6 @@ load("@score_dash_license_checker//:dash.bzl", "dash_license_checker")
 load("@score_format_checker//:macros.bzl", "use_format_targets")
 load("@score_python_basics//:defs.bzl", "score_virtualenv")
 load("@score_starpls_lsp//:starpls.bzl", "setup_starpls")
-load("@hedron_compile_commands//:refresh_compile_commands.bzl", "refresh_compile_commands")
 load("//:project_config.bzl", "PROJECT_CONFIG")
 
 setup_starpls(
@@ -52,16 +53,18 @@ dash_license_checker(
 # Add target for formatting checks
 use_format_targets()
 
-
 refresh_compile_commands(
     name = "refresh_compile_commands",
 
     # Specify the targets of interest.
     # For example, specify a dict of targets and any flags required to build.
-    targets = ["//tests/...", "//src/..."]
+    targets = [
+        "//tests/...",
+        "//src/...",
+    ],
     # No need to add flags already in .bazelrc. They're automatically picked up.
     # If you don't need flags, a list of targets is also okay, as is a single target string.
     # Wildcard patterns, like //... for everything, *are* allowed here, just like a build.
-      # As are additional targets (+) and subtractions (-), like in bazel query https://docs.bazel.build/versions/main/query.html#expressions
+    # As are additional targets (+) and subtractions (-), like in bazel query https://docs.bazel.build/versions/main/query.html#expressions
     # And if you're working on a header-only library, specify a test or binary target that compiles it.
 )
