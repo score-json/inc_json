@@ -1,3 +1,5 @@
+load("@hedron_compile_commands//:refresh_compile_commands.bzl", "refresh_compile_commands")
+
 # *******************************************************************************
 # Copyright (c) 2025 Contributors to the Eclipse Foundation
 #
@@ -15,7 +17,6 @@ load("@score_dash_license_checker//:dash.bzl", "dash_license_checker")
 load("@score_format_checker//:macros.bzl", "use_format_targets")
 load("@score_python_basics//:defs.bzl", "score_virtualenv")
 load("@score_starpls_lsp//:starpls.bzl", "setup_starpls")
-load("@hedron_compile_commands//:refresh_compile_commands.bzl", "refresh_compile_commands")
 load("//:project_config.bzl", "PROJECT_CONFIG")
 
 setup_starpls(

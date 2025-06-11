@@ -33,7 +33,6 @@ jobs:
       - name: Auto-format Bazel/Starlark files
         run: |
           buildifier BUILD MODULE.bazel
-          find . -name '*.bzl' -o -name 'BUILD' -o -name 'MODULE.bazel' | xargs buildifier
   auto-format-yaml:
     runs-on: ubuntu-latest
     steps:
