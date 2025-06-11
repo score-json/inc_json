@@ -30,8 +30,6 @@ jobs:
         with:
           pr-number: ${{ github.event.number }}
           base-branch: ${{ github.event.pull_request.base.ref }}
-          clang-tidy:
-
   clang-tidy:
     name: Clang-Tidy Check
     runs-on: ubuntu-latest
@@ -52,6 +50,4 @@ jobs:
         run: bazel run refresh_compile_commands
       - name: Run Clang-Tidy
         run: |
-          find . -name '*.cpp' -print0 | xargs -0 clang-tidy -p /workspaces/inc_json_p/compile_commands.json --fix-errors -checks='*'
-
-#test
+          find . -name '*.cpp' -print0 | xargs -0 clang-tidy /workspaces/inc_json_p/compile_commands.json --fix-errors -checks='*'
