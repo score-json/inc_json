@@ -1,0 +1,6 @@
+[submodule "score/json/internal/parser/nlohmann/parser_backend/tests/src/json_test_data_NEW"]
+	path = score/json/internal/parser/nlohmann/parser_backend/tests/src/json_test_data_NEW
+	url = https://github.com/nlohmann/json_test_data.git
+[submodule "score/json/internal/parser/nlohmann/parser_backend/tests/src/json_test_data"]
+	path = score/json/internal/parser/nlohmann/parser_backend/tests/src/json_test_data
+	url = https://github.com/nlohmann/json_test_data.git
