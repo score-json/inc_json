@@ -25,6 +25,13 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4.2.2
+      with:
+        submodules: true
+
+    - name: Access json_test_data submodule
+      run: |
+        echo "Contents of json_test_data:"
+        ls score/json/internal/parser/nlohmann/parser_backend/tests/src/json_test_data
 
     - name: Setup Bazel with shared caching
       uses: bazel-contrib/setup-bazel@0.14.0
