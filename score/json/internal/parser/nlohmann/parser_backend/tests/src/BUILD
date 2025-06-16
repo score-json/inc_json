@@ -22,7 +22,14 @@ cc_library(
 
 cc_test(
     name = "all_nlohmann_tests",
-    srcs = glob(["unit*.cpp", "*.json"]),
+    srcs = glob([
+        "unit*.cpp",
+    ], exclude = [
+        "unit-32bit.cpp",
+    ]) + select({
+        "@platforms//cpu:x86_32": ["unit-32bit.cpp"],  # Only include on 32-bit x86
+        "//conditions:default": [],
+    }),
     deps = [
         ":test_data_header",
         "//score/json/internal/parser/nlohmann/parser_backend/single_include/nlohmann:nlohmann_json",
