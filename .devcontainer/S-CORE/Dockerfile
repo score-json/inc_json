@@ -27,6 +27,7 @@ RUN apt-get update && \
         clang-tidy-${LLVM_VERSION} \
         clang-format-${LLVM_VERSION} \
         doxygen=1.9.4-4 \
+        python3-sphinx \
         curl \
     && apt-get clean && \
     rm -rf bazel-bin bazel-inc_json bazel-out bazel-testlogs && \
