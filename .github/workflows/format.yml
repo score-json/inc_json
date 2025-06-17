@@ -20,6 +20,31 @@ on:
     types: [checks_requested]
 
 jobs:
+  auto-format-starlark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install buildifier
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y golang
+          go install github.com/bazelbuild/buildtools/buildifier@latest
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+      - name: Auto-format Bazel/Starlark files
+        run: |
+          find . -name '*.bzl' -o -name 'BUILD' -o -name 'MODULE.bazel' | xargs buildifier
+  auto-format-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install prettier
+        run: |
+          sudo apt-get update
+          sudo apt install nodejs npm
+          npm install --global prettier
+      - name: Auto-format yaml files
+        run: |
+          prettier --write "**/*.yml"
   formatting-check:
     uses: eclipse-score/cicd-workflows/.github/workflows/format.yml@main
     with:
