@@ -28,6 +28,7 @@ RUN apt-get update && \
         clang-format-${LLVM_VERSION} \
         doxygen=1.9.4-4 \
         curl \
+        python3-sphinx \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
