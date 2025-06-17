@@ -37,6 +37,7 @@ jobs:
       pull-requests: write
       id-token: write
 
+
     with:
       # the bazel-target depends on your repo specific docs_targets configuration (e.g. "suffix")Add commentMore actions
       bazel-target: "//docs:incremental -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}"
