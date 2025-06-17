@@ -2,5 +2,9 @@
   {
     "version": "main",
     "url": "https://score-json.github.io/inc_json/main/"
+  },
+  {
+    "version": "pr-5",
+    "url": "https://score-json.github.io/inc_json/pr-5/"
   }
 ]
