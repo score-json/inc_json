@@ -14,7 +14,7 @@
 #include <doctest.h>
 
 #undef TEST_DATA_DIRECTORY
-#define TEST_DATA_DIRECTORY "score/json/internal/parser/nlohmann/parser_backend/tests/src/json_test_data"
+#define TEST_DATA_DIRECTORY "nlohmann_json/tests/src/json_test_data"
 
 namespace utils
 {

@@ -31,7 +31,7 @@ jobs:
     - name: Access json_test_data submodule
       run: |
         echo "Contents of json_test_data:"
-        ls score/json/internal/parser/nlohmann/parser_backend/tests/src/json_test_data
+        ls nlohmann_json/tests/src/json_test_data
 
     - name: Setup Bazel with shared caching
       uses: bazel-contrib/setup-bazel@0.14.0
@@ -41,4 +41,4 @@ jobs:
         bazelisk-cache: true
 
     - name: Run Bazel Test
-      run: bazel test //score/json/internal/parser/nlohmann/parser_backend/tests/src:all_nlohmann_tests
+      run: bazel test //nlohmann_json/tests/src:all_nlohmann_tests

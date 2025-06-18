@@ -4,9 +4,9 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/score/json/internal/parser/nlohmann/parser_backend/include",
-                "${workspaceFolder}/score/json/internal/parser/nlohmann/parser_backend/tests/thirdparty/doctest",
-                "/home/erikhu1/.cache/bazel/_bazel_erikhu1/a40457d862cc270bcbbc54c0515dab3a/execroot/_main/bazel-out/k8-fastbuild/bin/score/json/internal/parser/nlohmann/parser_backend/tests/src"
+                "${workspaceFolder}/nlohmann_json/include",
+                "${workspaceFolder}/nlohmann_json/tests/thirdparty/doctest",
+                "/home/erikhu1/.cache/bazel/_bazel_erikhu1/a40457d862cc270bcbbc54c0515dab3a/execroot/_main/bazel-out/k8-fastbuild/bin/nlohmann_json/tests/src"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang-16",

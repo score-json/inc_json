@@ -32,10 +32,10 @@ cc_test(
     }),
     deps = [
         ":test_data_header",
-        "//score/json/internal/parser/nlohmann/parser_backend/single_include/nlohmann:nlohmann_json",
-        "//score/json/internal/parser/nlohmann/parser_backend/tests/thirdparty/doctest:doctest_compatibility",
-        "//score/json/internal/parser/nlohmann/parser_backend/tests/thirdparty/doctest:doctest",
-        "//score/json/internal/parser/nlohmann/parser_backend/tests/thirdparty/fifo_map:fifo_map",
+        "//nlohmann_json/single_include/nlohmann:nlohmann_json",
+        "//nlohmann_json/tests/thirdparty/doctest:doctest_compatibility",
+        "//nlohmann_json/tests/thirdparty/doctest:doctest",
+        "//nlohmann_json/tests/thirdparty/fifo_map:fifo_map",
 
     ],
     data = glob(["json_test_data/**"]),
