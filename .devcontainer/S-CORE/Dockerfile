@@ -29,6 +29,7 @@ RUN apt-get update && \
         doxygen=1.9.4-4 \
         curl \
     && apt-get clean && \
+    rm -rf bazel-bin bazel-inc_json bazel-out bazel-testlogs && \
     rm -rf /var/lib/apt/lists/*
 
 # Specify default versions via update alternatives
