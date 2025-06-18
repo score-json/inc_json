@@ -30,8 +30,6 @@ jobs:
         with:
           pr-number: ${{ github.event.number }}
           base-branch: ${{ github.event.pull_request.base.ref }}
-          clang-tidy:
-
   clang-tidy:
     name: Clang-Tidy Check
     runs-on: ubuntu-latest
@@ -39,14 +37,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Set up Clang
-        run: sudo apt-get update && sudo apt-get install -y clang-16 clang-tidy-16
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-16 clang-tidy-16
+          sudo apt-get install -y build-essential libc++-dev libc++abi-dev
       - name: Set up Bazel
         run: |
           wget https://github.com/bazelbuild/bazelisk/releases/download/v1.12.0/bazelisk-linux-amd64
           chmod +x bazelisk-linux-amd64
           sudo mv bazelisk-linux-amd64 /usr/local/bin/bazel
       - name: Run Bazel Build
-        run: bazel build --compile_commands=compile_commands.json //...
+        run: bazel run refresh_compile_commands
       - name: Run Clang-Tidy
         run: |
-          clang-tidy-16 --fix-errors -p . $(find . -name '*.cpp')
+          find . -name '*.cpp' -print0 | xargs -0 clang-tidy /workspaces/inc_json_p/compile_commands.json --fix-errors -checks='*'
