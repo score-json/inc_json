@@ -1,0 +1,760 @@
+Running clang-tidy-16 on all files in '/workspaces/inc_json'
+
+Checking file 'src/input/main.cpp'
+4 errors generated.
+Error while processing /workspaces/inc_json/src/input/main.cpp.
+/workspaces/inc_json/src/input/main.cpp:17:28: error: expected '{' [clang-diagnostic-error]
+    namespace std::literals; // Ensure we can use literals if needed
+                           ^
+/workspaces/inc_json/src/input/main.cpp:18:35: error: expected '{' [clang-diagnostic-error]
+    namespace std::chrono_literals; // Ensure we can use chrono literals if needed
+                                  ^
+/workspaces/inc_json/src/input/main.cpp:19:31: error: expected '{' [clang-diagnostic-error]
+    namespace std::this_thread; // Ensure we can use this_thread if needed
+                              ^
+/workspaces/inc_json/src/input/main.cpp:20:14: error: namespaces can only be defined in global or namespace scope [clang-diagnostic-error]
+    namespace{
+             ^
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/**/*.cpp'
+Error reading configuration from /workspaces/inc_json/nlohmann_json/include/nlohmann/**: directory doesn't exist.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/**/*.cpp.
+error: no input files [clang-diagnostic-error]
+error: no such file or directory: '/workspaces/inc_json/nlohmann_json/include/nlohmann/**/*.cpp' [clang-diagnostic-error]
+error: unable to handle compilation, expected exactly one compiler job in '' [clang-diagnostic-error]
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/adl_serializer.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/adl_serializer.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/adl_serializer.hpp:11:10: error: 'utility' file not found [clang-diagnostic-error]
+#include <utility>
+         ^~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/byte_container_with_subtype.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/byte_container_with_subtype.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/byte_container_with_subtype.hpp:11:10: error: 'cstdint' file not found [clang-diagnostic-error]
+#include <cstdint> // uint8_t, uint64_t
+         ^~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/abi_macros.hpp'
+
+Checking file 'nlohmann_json/include/nlohmann/detail/conversions/from_json.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/from_json.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/from_json.hpp:11:10: error: 'algorithm' file not found [clang-diagnostic-error]
+#include <algorithm> // transform
+         ^~~~~~~~~~~
+Suppressed 3 warnings (3 NOLINT).
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp'
+34 warnings and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:12:10: error: 'array' file not found [clang-diagnostic-error]
+#include <array> // array
+         ^~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:109:29: error: variable 'u_lo' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t u_lo = x.f & 0xFFFFFFFFu;
+                            ^
+                                 = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:110:29: error: variable 'u_hi' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t u_hi = x.f >> 32u;
+                            ^
+                                 = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:111:29: error: variable 'v_lo' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t v_lo = y.f & 0xFFFFFFFFu;
+                            ^
+                                 = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:112:29: error: variable 'v_hi' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t v_hi = y.f >> 32u;
+                            ^
+                                 = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:114:29: error: variable 'p0' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t p0 = u_lo * v_lo;
+                            ^
+                               = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:115:29: error: variable 'p1' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t p1 = u_lo * v_hi;
+                            ^
+                               = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:116:29: error: variable 'p2' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t p2 = u_hi * v_lo;
+                            ^
+                               = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:117:29: error: variable 'p3' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t p3 = u_hi * v_hi;
+                            ^
+                               = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:119:29: error: variable 'p0_hi' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t p0_hi = p0 >> 32u;
+                            ^
+                                  = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:120:29: error: variable 'p1_lo' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t p1_lo = p1 & 0xFFFFFFFFu;
+                            ^
+                                  = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:121:29: error: variable 'p1_hi' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t p1_hi = p1 >> 32u;
+                            ^
+                                  = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:122:29: error: variable 'p2_lo' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t p2_lo = p2 & 0xFFFFFFFFu;
+                            ^
+                                  = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:123:29: error: variable 'p2_hi' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t p2_hi = p2 >> 32u;
+                            ^
+                                  = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:125:23: error: variable 'Q' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        std::uint64_t Q = p0_hi + p1_lo + p2_lo;
+                      ^
+                        = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:138:29: error: variable 'h' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t h = p3 + p2_hi + p1_hi + (Q >> 32u);
+                            ^
+                              = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:204:24: error: variable 'kPrecision' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+    constexpr int      kPrecision = std::numeric_limits<FloatType>::digits; // = p (includes the hidden bit)
+                       ^
+                                  = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:205:24: error: variable 'kBias' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+    constexpr int      kBias      = std::numeric_limits<FloatType>::max_exponent - 1 + (kPrecision - 1);
+                       ^
+                             = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:207:29: error: variable 'kHiddenBit' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+    constexpr std::uint64_t kHiddenBit = std::uint64_t{1} << (kPrecision - 1); // = 2^(p-1)
+                            ^
+                                       = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:212:25: error: variable 'E' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+    const std::uint64_t E = bits >> (kPrecision - 1);
+                        ^
+                          = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:213:25: error: variable 'F' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+    const std::uint64_t F = bits & (kHiddenBit - 1);
+                        ^
+                          = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:573:5: error: this loop is infinite; none of its condition variables (rest) are updated in the loop body [bugprone-infinite-loop,-warnings-as-errors]
+    while (rest < dist
+    ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:608:19: error: variable 'delta' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+    std::uint64_t delta = diyfp::sub(M_plus, M_minus).f; // (significand of (M+ - M-), implicit exponent is e)
+                  ^
+                        = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:609:19: error: variable 'dist' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+    std::uint64_t dist  = diyfp::sub(M_plus, w      ).f; // (significand of (M+ - w ), implicit exponent is e)
+                  ^
+                       = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:621:19: error: variable 'p2' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+    std::uint64_t p2 = M_plus.f & (one.f - 1);                    // p2 = f mod 2^-e
+                  ^
+                     = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:629:19: error: variable 'pow10' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+    std::uint32_t pow10{};
+                  ^
+                        = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:630:15: error: variable 'k' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+    const int k = find_largest_pow10(p1, pow10);
+              ^
+                = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:657:29: error: variable 'd' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint32_t d = p1 / pow10;  // d = p1 div 10^(n-1)
+                            ^
+                              = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:658:29: error: variable 'r' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint32_t r = p1 % pow10;  // r = p1 mod 10^(n-1)
+                            ^
+                              = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:683:29: error: variable 'rest' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t rest = (std::uint64_t{p1} << -one.e) + p2;
+                            ^
+                                 = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:699:33: error: variable 'ten_n' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+            const std::uint64_t ten_n = std::uint64_t{pow10} << -one.e;
+                                ^
+                                      = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:763:29: error: variable 'd' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t d = p2 >> -one.e;     // d = (10 * p2) div 2^-e
+                            ^
+                              = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:764:29: error: variable 'r' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::uint64_t r = p2 & (one.f - 1); // r = (10 * p2) mod 2^-e
+                            ^
+                              = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:804:25: error: variable 'ten_m' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+    const std::uint64_t ten_m = one.f;
+                        ^
+                              = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_chars.hpp:1108:19: error: variable 'kMaxExp' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+    constexpr int kMaxExp = std::numeric_limits<FloatType>::digits10;
+                  ^
+                          = 0
+34 warnings treated as errors
+
+Checking file 'nlohmann_json/include/nlohmann/detail/conversions/to_json.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_json.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/conversions/to_json.hpp:11:10: error: 'nlohmann/detail/macro_scope.hpp' file not found [clang-diagnostic-error]
+#include <nlohmann/detail/macro_scope.hpp> // JSON_HAS_CPP_17
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Suppressed 3 warnings (3 NOLINT).
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/exceptions.hpp'
+8 warnings and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/exceptions.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/exceptions.hpp:11:10: error: 'cstddef' file not found [clang-diagnostic-error]
+#include <cstddef> // nullptr_t
+         ^~~~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/exceptions.hpp:181:27: error: variable 'w' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::string w = concat(exception::name("parse_error", id_), "parse error",
+                          ^
+                            = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/exceptions.hpp:189:27: error: variable 'w' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::string w = concat(exception::name("parse_error", id_), "parse error",
+                          ^
+                            = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/exceptions.hpp:207:5: error: constructor does not initialize these fields: byte [cppcoreguidelines-pro-type-member-init,hicpp-member-init,-warnings-as-errors]
+    parse_error(int id_, std::size_t byte_, const char* what_arg)
+    ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/exceptions.hpp:225:27: error: variable 'w' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::string w = concat(exception::name("invalid_iterator", id_), exception::diagnostics(context), what_arg);
+                          ^
+                            = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/exceptions.hpp:243:27: error: variable 'w' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::string w = concat(exception::name("type_error", id_), exception::diagnostics(context), what_arg);
+                          ^
+                            = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/exceptions.hpp:260:27: error: variable 'w' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::string w = concat(exception::name("out_of_range", id_), exception::diagnostics(context), what_arg);
+                          ^
+                            = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/exceptions.hpp:277:27: error: variable 'w' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const std::string w = concat(exception::name("other_error", id_), exception::diagnostics(context), what_arg);
+                          ^
+                            = 0
+7 warnings treated as errors
+
+Checking file 'nlohmann_json/include/nlohmann/detail/hash.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/hash.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/hash.hpp:11:10: error: 'cstdint' file not found [clang-diagnostic-error]
+#include <cstdint> // uint8_t
+         ^~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/input/binary_reader.hpp'
+2 warnings and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/binary_reader.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/binary_reader.hpp:11:10: error: 'algorithm' file not found [clang-diagnostic-error]
+#include <algorithm> // generate_n
+         ^~~~~~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/binary_reader.hpp:86:5: error: constructor does not initialize these fields:  [cppcoreguidelines-pro-type-member-init,hicpp-member-init,-warnings-as-errors]
+    explicit binary_reader(InputAdapterType&& adapter, const input_format_t format = input_format_t::json) noexcept : ia(std::move(adapter)), input_format(format)
+    ^
+Suppressed 4 warnings (4 NOLINT).
+1 warning treated as error
+
+Checking file 'nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp'
+12 warnings and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:11:10: error: 'array' file not found [clang-diagnostic-error]
+#include <array> // array
+         ^~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:47:7: error: class 'file_input_adapter' defines a default destructor, a copy assignment operator, a move constructor and a move assignment operator but does not define a copy constructor [cppcoreguidelines-special-member-functions,hicpp-special-member-functions,-warnings-as-errors]
+class file_input_adapter
+      ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:107:5: error: constructor does not initialize these fields: int_type [cppcoreguidelines-pro-type-member-init,hicpp-member-init,-warnings-as-errors]
+    explicit input_stream_adapter(std::istream& i)
+    ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:116:5: error: constructor does not initialize these fields: int_type [cppcoreguidelines-pro-type-member-init,hicpp-member-init,-warnings-as-errors]
+    input_stream_adapter(input_stream_adapter&& rhs) noexcept
+    ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:184:26: error: variable 'read_index' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        for (std::size_t read_index = 0; read_index < count * sizeof(T); ++read_index)
+                         ^
+                                    = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:238:13: error: repeated branch in conditional chain [bugprone-branch-clone,-warnings-as-errors]
+            {
+            ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:241:14: note: end of the original
+            }
+             ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:243:13: note: clone 1 starts here
+            {
+            ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:249:13: note: clone 2 starts here
+            {
+            ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:256:13: note: clone 3 starts here
+            {
+            ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:264:13: note: clone 4 starts here
+            {
+            ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:296:13: error: repeated branch in conditional chain [bugprone-branch-clone,-warnings-as-errors]
+            {
+            ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:299:14: note: end of the original
+            }
+             ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:301:13: note: clone 1 starts here
+            {
+            ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:307:13: note: clone 2 starts here
+            {
+            ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:342:5: error: constructor does not initialize these fields: int_type [cppcoreguidelines-pro-type-member-init,hicpp-member-init,-warnings-as-errors]
+    wide_string_input_adapter(BaseInputAdapter base)
+    ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/input_adapters.hpp:470:52: error: pointer parameter 'file' can be pointer to const [readability-non-const-parameter,-warnings-as-errors]
+inline file_input_adapter input_adapter(std::FILE* file)
+                                                   ^
+                                        const 
+8 warnings treated as errors
+
+Checking file 'nlohmann_json/include/nlohmann/detail/input/json_sax.hpp'
+8 warnings and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/json_sax.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/json_sax.hpp:11:10: error: 'cstddef' file not found [clang-diagnostic-error]
+#include <cstddef>
+         ^~~~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/json_sax.hpp:546:20: error: variable 'keep' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const bool keep = callback(static_cast<int>(ref_stack.size()), parse_event_t::object_start, discarded);
+                   ^
+                        = false
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/json_sax.hpp:580:20: error: variable 'keep' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const bool keep = callback(static_cast<int>(ref_stack.size()), parse_event_t::key, k);
+                   ^
+                        = false
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/json_sax.hpp:596:13: error: if with identical then and else branches [bugprone-branch-clone,-warnings-as-errors]
+            if (!callback(static_cast<int>(ref_stack.size()) - 1, parse_event_t::object_end, *ref_stack.back()))
+            ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/json_sax.hpp:606:13: note: else branch starts here
+            else
+            ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/json_sax.hpp:644:20: error: variable 'keep' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const bool keep = callback(static_cast<int>(ref_stack.size()), parse_event_t::array_start, discarded);
+                   ^
+                        = false
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/json_sax.hpp:676:9: error: variable 'keep' of type 'bool' can be declared 'const' [misc-const-correctness,-warnings-as-errors]
+        bool keep = true;
+        ^
+             const 
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/json_sax.hpp:681:13: error: if with identical then and else branches [bugprone-branch-clone,-warnings-as-errors]
+            if (keep)
+            ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/json_sax.hpp:694:13: note: else branch starts here
+            else
+            ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/json_sax.hpp:839:20: error: variable 'keep' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const bool keep = skip_callback || callback(static_cast<int>(ref_stack.size()), parse_event_t::value, value);
+                   ^
+                        = false
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/json_sax.hpp:874:20: error: variable 'store_element' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        const bool store_element = key_keep_stack.back();
+                   ^
+                                 = false
+Suppressed 8 warnings (8 NOLINT).
+8 warnings treated as errors
+
+Checking file 'nlohmann_json/include/nlohmann/detail/input/lexer.hpp'
+4 warnings and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/lexer.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/lexer.hpp:11:10: error: 'array' file not found [clang-diagnostic-error]
+#include <array> // array
+         ^~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/lexer.hpp:35:7: error: constructor does not initialize these fields: JSON_HEDLEY_CONST [cppcoreguidelines-pro-type-member-init,hicpp-member-init,-warnings-as-errors]
+class lexer_base
+      ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/lexer.hpp:174:9: error: variable 'codepoint' of type 'int' can be declared 'const' [misc-const-correctness,-warnings-as-errors]
+        int codepoint = 0;
+        ^
+            const 
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/lexer.hpp:717:17: error: switch has 7 consecutive identical branches [bugprone-branch-clone,-warnings-as-errors]
+                case 0xC2:
+                ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/lexer.hpp:829:18: note: last of these clones ends here
+                }
+                 ^
+Suppressed 4 warnings (4 NOLINT).
+3 warnings treated as errors
+
+Checking file 'nlohmann_json/include/nlohmann/detail/input/parser.hpp'
+3 warnings and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/parser.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/parser.hpp:11:10: error: 'cmath' file not found [clang-diagnostic-error]
+#include <cmath> // isfinite
+         ^~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/parser.hpp:71:5: error: constructor does not initialize these fields: m_lexer [cppcoreguidelines-pro-type-member-init,hicpp-member-init,-warnings-as-errors]
+    explicit parser(InputAdapterType&& adapter,
+    ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/parser.hpp:157:42: error: variable 'sax_acceptor' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+        json_sax_acceptor<BasicJsonType> sax_acceptor;
+                                         ^
+                                                      = 0
+2 warnings treated as errors
+
+Checking file 'nlohmann_json/include/nlohmann/detail/input/position_t.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/position_t.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/input/position_t.hpp:11:10: error: 'cstddef' file not found [clang-diagnostic-error]
+#include <cstddef> // size_t
+         ^~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/iterators/internal_iterator.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/internal_iterator.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/internal_iterator.hpp:11:10: error: 'nlohmann/detail/abi_macros.hpp' file not found [clang-diagnostic-error]
+#include <nlohmann/detail/abi_macros.hpp>
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/iterators/iter_impl.hpp'
+12 warnings and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iter_impl.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iter_impl.hpp:11:10: error: 'iterator' file not found [clang-diagnostic-error]
+#include <iterator> // iterator, random_access_iterator_tag, bidirectional_iterator_tag, advance, next
+         ^~~~~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iter_impl.hpp:47:7: error: constructor does not initialize these fields: , enable_if_t [cppcoreguidelines-pro-type-member-init,hicpp-member-init,-warnings-as-errors]
+class iter_impl // NOLINT(cppcoreguidelines-special-member-functions,hicpp-special-member-functions)
+      ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iter_impl.hpp:100:5: error: constructor does not initialize these fields: , enable_if_t [cppcoreguidelines-pro-type-member-init,hicpp-member-init,-warnings-as-errors]
+    explicit iter_impl(pointer object) noexcept : m_object(object)
+    ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iter_impl.hpp:150:5: error: constructor does not initialize these fields: , enable_if_t [cppcoreguidelines-pro-type-member-init,hicpp-member-init,-warnings-as-errors]
+    iter_impl(const iter_impl<const BasicJsonType>& other) noexcept
+    ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iter_impl.hpp:175:5: error: constructor does not initialize these fields: , enable_if_t [cppcoreguidelines-pro-type-member-init,hicpp-member-init,-warnings-as-errors]
+    iter_impl(const iter_impl<typename std::remove_const<BasicJsonType>::type>& other) noexcept
+    ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iter_impl.hpp:175:78: error: all parameters should be named in a function [hicpp-named-parameter,readability-named-parameter,-warnings-as-errors]
+    iter_impl(const iter_impl<typename std::remove_const<BasicJsonType>::type>& other) noexcept
+                                                                             ^
+                                                                              /*unused*/
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iter_impl.hpp:185:89: error: all parameters should be named in a function [hicpp-named-parameter,readability-named-parameter,-warnings-as-errors]
+    iter_impl& operator=(const iter_impl<typename std::remove_const<BasicJsonType>::type>& other) noexcept // NOLINT(cert-oop54-cpp)
+                                                                                        ^
+                                                                                         /*unused*/
+Suppressed 2 warnings (2 NOLINT).
+6 warnings treated as errors
+
+Checking file 'nlohmann_json/include/nlohmann/detail/iterators/iteration_proxy.hpp'
+2 warnings and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iteration_proxy.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iteration_proxy.hpp:11:10: error: 'cstddef' file not found [clang-diagnostic-error]
+#include <cstddef> // size_t
+         ^~~~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iteration_proxy.hpp:186:1: error: a trailing return type is disallowed for this function declaration [fuchsia-trailing-return,-warnings-as-errors]
+auto get(const nlohmann::detail::iteration_proxy_value<IteratorType>& i) -> decltype(i.key())
+^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iteration_proxy.hpp:194:1: error: a trailing return type is disallowed for this function declaration [fuchsia-trailing-return,-warnings-as-errors]
+auto get(const nlohmann::detail::iteration_proxy_value<IteratorType>& i) -> decltype(i.value())
+^
+Suppressed 3 warnings (3 NOLINT).
+2 warnings treated as errors
+
+Checking file 'nlohmann_json/include/nlohmann/detail/iterators/iterator_traits.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iterator_traits.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/iterator_traits.hpp:11:10: error: 'iterator' file not found [clang-diagnostic-error]
+#include <iterator> // random_access_iterator_tag
+         ^~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/iterators/json_reverse_iterator.hpp'
+1 warning and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/json_reverse_iterator.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/json_reverse_iterator.hpp:11:10: error: 'cstddef' file not found [clang-diagnostic-error]
+#include <cstddef> // ptrdiff_t
+         ^~~~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/json_reverse_iterator.hpp:115:5: error: a trailing return type is disallowed for this function declaration [fuchsia-trailing-return,-warnings-as-errors]
+    auto key() const -> decltype(std::declval<Base>().key())
+    ^
+Suppressed 2 warnings (2 NOLINT).
+1 warning treated as error
+
+Checking file 'nlohmann_json/include/nlohmann/detail/iterators/primitive_iterator.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/primitive_iterator.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/iterators/primitive_iterator.hpp:11:10: error: 'cstddef' file not found [clang-diagnostic-error]
+#include <cstddef> // ptrdiff_t
+         ^~~~~~~~~
+Suppressed 2 warnings (2 NOLINT).
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/json_custom_base_class.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/json_custom_base_class.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/json_custom_base_class.hpp:11:10: error: 'type_traits' file not found [clang-diagnostic-error]
+#include <type_traits> // conditional, is_same
+         ^~~~~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/json_pointer.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/json_pointer.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/json_pointer.hpp:11:10: error: 'algorithm' file not found [clang-diagnostic-error]
+#include <algorithm> // all_of
+         ^~~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/json_ref.hpp'
+2 warnings and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/json_ref.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/json_ref.hpp:11:10: error: 'initializer_list' file not found [clang-diagnostic-error]
+#include <initializer_list>
+         ^~~~~~~~~~~~~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/json_ref.hpp:22:7: error: class 'json_ref' defines a default destructor, a copy constructor, a copy assignment operator and a move assignment operator but does not define a move constructor [cppcoreguidelines-special-member-functions,hicpp-special-member-functions,-warnings-as-errors]
+class json_ref
+      ^
+1 warning treated as error
+
+Checking file 'nlohmann_json/include/nlohmann/detail/macro_scope.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/macro_scope.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/macro_scope.hpp:11:10: error: 'utility' file not found [clang-diagnostic-error]
+#include <utility> // declval, pair
+         ^~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/macro_unscope.hpp'
+1 warning and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/macro_unscope.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/macro_unscope.hpp:13:30: error: pragma diagnostic pop could not pop, no matching push [clang-diagnostic-unknown-pragmas,-warnings-as-errors]
+    #pragma clang diagnostic pop
+                             ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/macro_unscope.hpp:47:10: error: 'nlohmann/thirdparty/hedley/hedley_undef.hpp' file not found [clang-diagnostic-error]
+#include <nlohmann/thirdparty/hedley/hedley_undef.hpp>
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 warning treated as error
+
+Checking file 'nlohmann_json/include/nlohmann/detail/meta/call_std/begin.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/call_std/begin.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/call_std/begin.hpp:11:10: error: 'nlohmann/detail/macro_scope.hpp' file not found [clang-diagnostic-error]
+#include <nlohmann/detail/macro_scope.hpp>
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/meta/call_std/end.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/call_std/end.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/call_std/end.hpp:11:10: error: 'nlohmann/detail/macro_scope.hpp' file not found [clang-diagnostic-error]
+#include <nlohmann/detail/macro_scope.hpp>
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/meta/cpp_future.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/cpp_future.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/cpp_future.hpp:12:10: error: 'array' file not found [clang-diagnostic-error]
+#include <array> // array
+         ^~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/meta/detected.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/detected.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/detected.hpp:11:10: error: 'type_traits' file not found [clang-diagnostic-error]
+#include <type_traits>
+         ^~~~~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/meta/identity_tag.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/identity_tag.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/identity_tag.hpp:11:10: error: 'nlohmann/detail/abi_macros.hpp' file not found [clang-diagnostic-error]
+#include <nlohmann/detail/abi_macros.hpp>
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/meta/is_sax.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/is_sax.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/is_sax.hpp:11:10: error: 'cstdint' file not found [clang-diagnostic-error]
+#include <cstdint> // size_t
+         ^~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/meta/std_fs.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/std_fs.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/std_fs.hpp:11:10: error: 'nlohmann/detail/macro_scope.hpp' file not found [clang-diagnostic-error]
+#include <nlohmann/detail/macro_scope.hpp>
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/meta/type_traits.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/type_traits.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/type_traits.hpp:11:10: error: 'limits' file not found [clang-diagnostic-error]
+#include <limits> // numeric_limits
+         ^~~~~~~~
+Suppressed 3 warnings (3 NOLINT).
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/meta/void_t.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/void_t.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/meta/void_t.hpp:11:10: error: 'nlohmann/detail/abi_macros.hpp' file not found [clang-diagnostic-error]
+#include <nlohmann/detail/abi_macros.hpp>
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/output/binary_writer.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/output/binary_writer.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/output/binary_writer.hpp:11:10: error: 'algorithm' file not found [clang-diagnostic-error]
+#include <algorithm> // reverse
+         ^~~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/output/output_adapters.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/output/output_adapters.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/output/output_adapters.hpp:11:10: error: 'algorithm' file not found [clang-diagnostic-error]
+#include <algorithm> // copy
+         ^~~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/output/serializer.hpp'
+5 warnings and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/output/serializer.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/output/serializer.hpp:12:10: error: 'algorithm' file not found [clang-diagnostic-error]
+#include <algorithm> // reverse, remove, fill, find, none_of
+         ^~~~~~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/output/serializer.hpp:51:7: error: class 'serializer' defines a default destructor, a copy assignment operator, a move constructor and a move assignment operator but does not define a copy constructor [cppcoreguidelines-special-member-functions,hicpp-special-member-functions,-warnings-as-errors]
+class serializer
+      ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/output/serializer.hpp:136:38: error: variable 'cnt' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+                    for (std::size_t cnt = 0; cnt < val.m_data.m_value.object->size() - 1; ++cnt, ++i)
+                                     ^
+                                         = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/output/serializer.hpp:165:38: error: variable 'cnt' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+                    for (std::size_t cnt = 0; cnt < val.m_data.m_value.object->size() - 1; ++cnt, ++i)
+                                     ^
+                                         = 0
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/output/serializer.hpp:330:17: error: if with identical then and else branches [bugprone-branch-clone,-warnings-as-errors]
+                if (val.m_data.m_value.boolean)
+                ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/output/serializer.hpp:334:17: note: else branch starts here
+                else
+                ^
+4 warnings treated as errors
+
+Checking file 'nlohmann_json/include/nlohmann/detail/string_concat.hpp'
+1 warning and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/string_concat.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/string_concat.hpp:11:10: error: 'cstring' file not found [clang-diagnostic-error]
+#include <cstring> // strlen
+         ^~~~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/string_concat.hpp:96:13: error: redundant 'concat_into' declaration [readability-redundant-declaration,-warnings-as-errors]
+inline void concat_into(OutStringType& out, const Arg& arg, Args && ... rest);
+~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/string_concat.hpp:89:13: note: previously declared here
+inline void concat_into(OutStringType& out, const Arg& arg, Args && ... rest);
+            ^
+1 warning treated as error
+
+Checking file 'nlohmann_json/include/nlohmann/detail/string_escape.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/string_escape.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/string_escape.hpp:11:10: error: 'nlohmann/detail/abi_macros.hpp' file not found [clang-diagnostic-error]
+#include <nlohmann/detail/abi_macros.hpp>
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/string_utils.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/string_utils.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/string_utils.hpp:11:10: error: 'cstddef' file not found [clang-diagnostic-error]
+#include <cstddef> // size_t
+         ^~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/detail/value_t.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/detail/value_t.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/detail/value_t.hpp:11:10: error: 'array' file not found [clang-diagnostic-error]
+#include <array> // array
+         ^~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/json.hpp'
+10 warnings and 1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/json.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/json.hpp:21:10: error: 'algorithm' file not found [clang-diagnostic-error]
+#include <algorithm> // all_of, find, for_each
+         ^~~~~~~~~~~
+/workspaces/inc_json/nlohmann_json/include/nlohmann/json.hpp:686:10: error: method 'assert_invariant' can be made static [readability-convert-member-functions-to-static,-warnings-as-errors]
+    void assert_invariant(bool check_parents = true) const noexcept
+         ^                                           ~~~~~~
+    static 
+/workspaces/inc_json/nlohmann_json/include/nlohmann/json.hpp:757:15: error: method 'set_parent' can be made static [readability-convert-member-functions-to-static,-warnings-as-errors]
+    reference set_parent(reference j, std::size_t old_capacity = detail::unknown_size())
+              ^
+    static 
+/workspaces/inc_json/nlohmann_json/include/nlohmann/json.hpp:819:5: error: constructor does not initialize these fields: ,  [cppcoreguidelines-pro-type-member-init,hicpp-member-init,-warnings-as-errors]
+    basic_json(const value_t v)
+    ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/json.hpp:827:5: error: constructor does not initialize these fields: ,  [cppcoreguidelines-pro-type-member-init,hicpp-member-init,-warnings-as-errors]
+    basic_json(std::nullptr_t = nullptr) noexcept // NOLINT(bugprone-exception-escape)
+    ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/json.hpp:827:31: error: all parameters should be named in a function [hicpp-named-parameter,readability-named-parameter,-warnings-as-errors]
+    basic_json(std::nullptr_t = nullptr) noexcept // NOLINT(bugprone-exception-escape)
+                              ^
+                               /*unused*/
+/workspaces/inc_json/nlohmann_json/include/nlohmann/json.hpp:4261:10: error: member variable 'm_data' has public visibility [cppcoreguidelines-non-private-member-variables-in-classes,-warnings-as-errors]
+    data m_data = {};
+         ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/json.hpp:5273:8: error: modification of 'std' namespace can result in undefined behavior [cert-dcl58-cpp,-warnings-as-errors]
+struct less< ::nlohmann::detail::value_t> // do not remove the space after '<', see https://github.com/nlohmann/json/pull/679
+       ^
+Suppressed 3 warnings (3 NOLINT).
+7 warnings treated as errors
+
+Checking file 'nlohmann_json/include/nlohmann/json_fwd.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/json_fwd.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/json_fwd.hpp:12:10: error: 'cstdint' file not found [clang-diagnostic-error]
+#include <cstdint> // int64_t, uint64_t
+         ^~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/ordered_map.hpp'
+1 error generated.
+Error while processing /workspaces/inc_json/nlohmann_json/include/nlohmann/ordered_map.hpp.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/ordered_map.hpp:11:10: error: 'functional' file not found [clang-diagnostic-error]
+#include <functional> // equal_to, less
+         ^~~~~~~~~~~~
+Found compiler error(s).
+
+Checking file 'nlohmann_json/include/nlohmann/thirdparty/hedley/hedley.hpp'
+4 warnings generated.
+/workspaces/inc_json/nlohmann_json/include/nlohmann/thirdparty/hedley/hedley.hpp:795:6: error: nested redundant #if; consider removing it [readability-redundant-preprocessor,-warnings-as-errors]
+#    if JSON_HEDLEY_HAS_WARNING("-Wc++17-extensions")
+     ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/thirdparty/hedley/hedley.hpp:794:4: note: previous #if was here
+#  if JSON_HEDLEY_HAS_WARNING("-Wc++98-compat")
+   ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/thirdparty/hedley/hedley.hpp:796:8: error: nested redundant #if; consider removing it [readability-redundant-preprocessor,-warnings-as-errors]
+#      if JSON_HEDLEY_HAS_WARNING("-Wc++1z-extensions")
+       ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/thirdparty/hedley/hedley.hpp:794:4: note: previous #if was here
+#  if JSON_HEDLEY_HAS_WARNING("-Wc++98-compat")
+   ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/thirdparty/hedley/hedley.hpp:1945:4: error: nested redundant #if; consider removing it [readability-redundant-preprocessor,-warnings-as-errors]
+#  if JSON_HEDLEY_HAS_WARNING("-Wgcc-compat")
+   ^
+/workspaces/inc_json/nlohmann_json/include/nlohmann/thirdparty/hedley/hedley.hpp:1944:2: note: previous #if was here
+#if JSON_HEDLEY_HAS_ATTRIBUTE(diagnose_if)
+ ^
+3 warnings treated as errors
+
+Checking file 'nlohmann_json/include/nlohmann/thirdparty/hedley/hedley_undef.hpp'

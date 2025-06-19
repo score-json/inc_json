@@ -1,4 +1,4 @@
-version: '{build}'
+version: "{build}"
 
 # only build PRs and commits to develop branch
 # (see https://help.appveyor.com/discussions/questions/55079-two-builds-per-commit-to-pull-request)
