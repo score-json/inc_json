@@ -27,7 +27,7 @@ Overview
 This repository provides the aspired setup for projects using **C++** and **Bazel** as a build system.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Additional Documentation
 
    trustable/tenets/TA-SUPPLY_CHAIN

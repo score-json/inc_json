@@ -1,4 +1,4 @@
-TA-MISBEHAVIOURS Documentation
+TA-MISBEHAVIOURS
 ===============================
 
 Overview

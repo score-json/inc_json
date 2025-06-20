@@ -1,4 +1,4 @@
-TA-BEHAVIOURS Documentation
+TA-BEHAVIOURS
 ===========================
 
 Overview
@@ -31,7 +31,7 @@ Methodology
 Test Cases
 ----------
 
-### unit-algorithmus.cpp
+### unit-algorithms.cpp
 
 This section provides examples of testing the expected behaviors of software components using the Nlohmann JSON library's parsing capabilities. The file contains comprehensive test cases demonstrating the use of JSON in conjunction with Standard Template Library (STL) algorithms.
 

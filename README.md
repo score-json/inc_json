@@ -5,8 +5,6 @@ This module is dedicated to implementing the Trustable Software Framework for th
 ## Table of Contents
 
 - [Overview](#overview)
-- [Requirements](#requirements)
-- [Project Layout](#project-layout)
 - [Quick Start](#quick-start)
 
 ## Overview
