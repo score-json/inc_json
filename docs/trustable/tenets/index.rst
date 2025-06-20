@@ -24,3 +24,4 @@ Documentation
 
    TA-BEHAVIOURS
    TA-MISBEHAVIOURS
+   TA-TESTS
