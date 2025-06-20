@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -11,6 +11,8 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
+
+.. _library_description:
 
 NLOHMANN JSON LIBRARY
 =============================
@@ -28,12 +30,12 @@ This repository provides the aspired setup for projects using **C++** and **Baze
 
 .. toctree::
    :maxdepth: 1
-   :caption: Additional Documentation
+   :glob:
 
-   trustable/tenets/TA-SUPPLY_CHAIN
-   trustable/tenets/TA-UPDATES
-   trustable/tenets/TA-BEHAVIOURS
-   trustable/tenets/TA-MISBEHAVIOURS
+   introduction/index.rst
+   trustable/index.rst
+   trustable/tenets/index.rst
+   Eclipse <https://projects.eclipse.org/projects/automotive.score>
 
 Requirements
 ------------
@@ -77,12 +79,9 @@ To update the documentation:
 
 .. code-block:: bash
 
-   python3 -m venv venv && \
-    . venv/bin/activate && \
-    pip install sphinx==8.2.3 sphinx-design sphinx-needs sphinxcontrib.plantuml
-   cd docs
-   sphinx-build -b html . _build
+   bazel run //docs:incremental
    python3 -m http.server --directory _build
+
 To generate LaTeX documentation:
 
 .. code-block:: bash

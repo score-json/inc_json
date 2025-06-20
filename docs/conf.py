@@ -1,5 +1,5 @@
 # *******************************************************************************
-# Copyright (c) 2024 Contributors to the Eclipse Foundation
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
 # information regarding copyright ownership.
@@ -45,7 +45,7 @@ exclude_patterns = [
     # building the documentation via 'bazel run //docs:incremental' or esbonio, these
     # entries are required to prevent the build from failing.
     "bazel-*",
-    # ".venv_docs",
+    ".venv_docs",
 ]
 
 templates_path = ["templates"]
