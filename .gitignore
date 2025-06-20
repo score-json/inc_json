@@ -56,3 +56,7 @@ __pycache__/
 /.coverage
 
 *.Identifier
+
+# Documentation
+docs/_build/
+venv/

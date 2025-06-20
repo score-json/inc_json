@@ -1,18 +1,21 @@
+# NLOHMANN JSON LIBRARY (TSF)
 
-# C++ & Rust Bazel Template Repository
+This module is dedicated to implementing the Trustable Software Framework for the Niels Lohmann JSON Library. Initially, it emphasizes ensuring the reliability and correctness of the library's parsing functionality. The Niels Lohmann JSON Library is recognized for its efficient and straightforward approach to JSON parsing, manipulation, and serialization within modern C++ applications, aiming to provide developers with a flexible and robust tool for managing JSON data structures. The framework seeks to enhance these capabilities, aligning them with rigorous software quality standards to ensure dependable JSON processing across diverse applications.
 
-This repository serves as a **template** for setting up **C++ and Rust projects** using **Bazel**.
-It provides a **standardized project structure**, ensuring best practices for:
+## Table of Contents
 
-- **Build configuration** with Bazel.
-- **Testing** (unit and integration tests).
-- **Documentation** setup.
-- **CI/CD workflows**.
-- **Development environment** configuration.
+- [Overview](#overview)
+- [Requirements](#requirements)
+- [Project Layout](#project-layout)
+- [Quick Start](#quick-start)
+
+## Overview
+
+This repository provides the aspired setup for projects using **C++** and **Bazel** as a build system.
 
 ---
 
-## 📂 Project Structure
+### 📂 Project Structure
 
 | File/Folder                         | Description                                       |
 | ----------------------------------- | ------------------------------------------------- |
@@ -20,9 +23,10 @@ It provides a **standardized project structure**, ensuring best practices for:
 | `src/`                              | Source files for the module                       |
 | `tests/`                            | Unit tests (UT) and integration tests (IT)        |
 | `examples/`                         | Example files used for guidance                   |
-| `docs/`                             | Documentation (Doxygen for C++ / mdBook for Rust) |
+| `docs/`                             | Documentation (Doxygen/ reStructuredText)         |
 | `.github/workflows/`                | CI/CD pipelines                                   |
 | `.vscode/`                          | Recommended VS Code settings                      |
+| `.devcontainer/S-CORE/`             | Development containter, containing used packages  |
 | `.bazelrc`, `MODULE.bazel`, `BUILD` | Bazel configuration & settings                    |
 | `project_config.bzl`                | Project-specific metadata for Bazel macros        |
 | `LICENSE.md`                        | Licensing information                             |
@@ -30,85 +34,45 @@ It provides a **standardized project structure**, ensuring best practices for:
 
 ---
 
-## 🚀 Getting Started
+### Additional Documentation
 
-### 1️⃣ Clone the Repository
+- trustable/tenets/TA-SUPPLY_CHAIN
+- trustable/tenets/TA-UPDATES
+- trustable/tenets/TA-BEHAVIOURS
+- trustable/tenets/TA-MISBEHAVIOURS
 
-```sh
-git clone https://github.com/eclipse-score/YOUR_PROJECT.git
-cd YOUR_PROJECT
+## Quick Start
+
+To build the module, run:
+
+```bash
+bazel build
+```
+To run tests, execute:
+
+```bash
+git submodule init
+git submodule update
+bazel test //nlohmann_json/tests/src:all_nlohmann_tests --test_output=all
 ```
 
-### 2️⃣ Build the Examples of module
+To update the reStructuredText-documentation, follow these steps:
 
-> DISCLAIMER: Depending what module implements, it's possible that different
-> configuration flags needs to be set on command line.
-
-To build all targets of the module the following command can be used:
-
-```sh
-bazel build //src/...
+```bash
+python3 -m venv venv && \
+. venv/bin/activate && \
+pip install sphinx==8.2.3 sphinx-design sphinx-needs sphinxcontrib.plantuml
+cd docs
+sphinx-build -b html . _build
+python3 -m http.server --directory _build
 ```
 
-This command will instruct Bazel to build all targets that are under Bazel
-package `src/`. The ideal solution is to provide single target that builds
-artifacts, for example:
-
-```sh
-bazel build //src/<module_name>:release_artifacts
+To generate LaTeX documentation, use:
+```bash
+apt-get install texlive texlive-latex-extra texlive-fonts-recommended
+sphinx-build -b latex . _build/latex
+cd _build/latex
+pdflatex nlohmannjsonlibrary.tex
 ```
 
-where `:release_artifacts` is filegroup target that collects all release
-artifacts of the module.
-
-> NOTE: This is just proposal, the final decision is on module maintainer how
-> the module code needs to be built.
-
-### 3️⃣ Run Tests
-
-```sh
-bazel test //tests/...
-```
-
----
-
-## 🛠 Tools & Linters
-
-The template integrates **tools and linters** from **centralized repositories** to ensure consistency across projects.
-
-- **C++:** `clang-tidy`, `cppcheck`, `Google Test`
-- **Rust:** `clippy`, `rustfmt`, `Rust Unit Tests`
-- **CI/CD:** GitHub Actions for automated builds and tests
-
----
-
-## 📖 Documentation
-
-- A **centralized docs structure** is planned.
-
----
-
-## ⚙️ `project_config.bzl`
-
-This file defines project-specific metadata used by Bazel macros, such as `dash_license_checker`.
-
-### 📌 Purpose
-
-It provides structured configuration that helps determine behavior such as:
-
-- Source language type (used to determine license check file format)
-- Safety level or other compliance info (e.g. ASIL level)
-
-### 📄 Example Content
-
-```python
-PROJECT_CONFIG = {
-    "asil_level": "QM",  # or "ASIL-A", "ASIL-B", etc.
-    "source_code": ["cpp", "rust"]  # Languages used in the module
-}
-```
-
-### 🔧 Use Case
-
-When used with macros like `dash_license_checker`, it allows dynamic selection of file types
- (e.g., `cargo`, `requirements`) based on the languages declared in `source_code`.
+Feel free to copy and use this Markdown format for your documentation purposes!

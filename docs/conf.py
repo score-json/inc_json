@@ -20,9 +20,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "Module Template Project"
+project = "NLOHMANN JSON LIBRARY"
 author = "S-CORE"
-version = "0.1"
+version = "3.12.0"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -45,7 +45,7 @@ exclude_patterns = [
     # building the documentation via 'bazel run //docs:incremental' or esbonio, these
     # entries are required to prevent the build from failing.
     "bazel-*",
-    ".venv_docs",
+    # ".venv_docs",
 ]
 
 templates_path = ["templates"]

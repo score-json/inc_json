@@ -12,10 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Module Template Documentation
+NLOHMANN JSON LIBRARY
 =============================
 
-This documentation describes the structure, usage and configuration of the Bazel-based C++/Rust module template.
+This module is dedicated to implementing the Trustable Software Framework for the Niels Lohmann JSON Library. Initially, it emphasizes ensuring the reliability and correctness of the library's parsing functionality. The Niels Lohmann JSON Library is recognized for its efficient and straightforward approach to JSON parsing, manipulation, and serialization within modern C++ applications, aiming to provide developers with a flexible and robust tool for managing JSON data structures. The framework seeks to enhance these capabilities, aligning them with rigorous software quality standards to ensure dependable JSON processing across diverse applications.
 
 .. contents:: Table of Contents
    :depth: 2
@@ -24,8 +24,16 @@ This documentation describes the structure, usage and configuration of the Bazel
 Overview
 --------
 
-This repository provides a standardized setup for projects using **C++** or **Rust** and **Bazel** as a build system.
-It integrates best practices for build, test, CI/CD and documentation.
+This repository provides the aspired setup for projects using **C++** and **Bazel** as a build system.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Additional Documentation
+
+   trustable/tenets/TA-SUPPLY_CHAIN
+   trustable/tenets/TA-UPDATES
+   trustable/tenets/TA-BEHAVIOURS
+   trustable/tenets/TA-MISBEHAVIOURS
 
 Requirements
 ------------
@@ -41,11 +49,10 @@ Requirements
 Project Layout
 --------------
 
-The module template includes the following top-level structure:
+This module includes the following top-level structure:
 
-- `src/`: Main C++/Rust sources
-- `tests/`: Unit and integration tests
-- `examples/`: Usage examples
+- `nlohmann_json/include/`: C++ source code for the NLOHMANN JSON library
+- `nlohmann_json/tests/`: Unit and integration tests
 - `docs/`: Documentation using `docs-as-code`
 - `.github/workflows/`: CI/CD pipelines
 
@@ -56,26 +63,31 @@ To build the module:
 
 .. code-block:: bash
 
-   bazel build //src/...
+   bazel build
 
 To run tests:
 
 .. code-block:: bash
 
-   bazel test //tests/...
+   git submodule init
+   git submodule update
+   bazel test //nlohmann_json/tests/src:all_nlohmann_tests --test_output=all
 
-Configuration
--------------
+To update the documentation:
 
-The `project_config.bzl` file defines metadata used by Bazel macros.
+.. code-block:: bash
 
-Example:
+   python3 -m venv venv && \
+    . venv/bin/activate && \
+    pip install sphinx==8.2.3 sphinx-design sphinx-needs sphinxcontrib.plantuml
+   cd docs
+   sphinx-build -b html . _build
+   python3 -m http.server --directory _build
+To generate LaTeX documentation:
 
-.. code-block:: python
+.. code-block:: bash
 
-   PROJECT_CONFIG = {
-       "asil_level": "QM",
-       "source_code": ["cpp", "rust"]
-   }
-
-This enables conditional behavior (e.g., choosing `clang-tidy` for C++ or `clippy` for Rust).
+   apt-get install texlive texlive-latex-extra texlive-fonts-recommended
+   sphinx-build -b latex . _build/latex
+   cd _build/latex
+   pdflatex nlohmannjsonlibrary.tex
