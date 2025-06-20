@@ -435,43 +435,38 @@
                 <article class="bd-article">
                   
   <section id="introduction">
-<span id="processes-introduction"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-</div>
-<section id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
-<div class="line-block">
-<div class="line">The score process model aims to establish organization rules for developing</div>
-<div class="line">open source software in the automotive industry, which can be used in safety and security context.</div>
-</div>
+<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>This document outlines the application of the Trustable Software Framework (TSF) to the JSON library developed by Niels Lohmann (<a class="reference external" href="https://github.com/nlohmann/json">json</a>). The TSF aims to ensure software reliability and compliance by setting guidelines for evaluating various aspects of software development. Our focus here is the library’s integration into the process score repository within the baselibs project. The ultimate goal is to certify the library as trustable based on stringent evaluation criteria involving rigorous testing, intuitive design, and seamless integration.</p>
+<section id="design-goals-of-the-json-library">
+<h2>Design Goals of the JSON Library<a class="headerlink" href="#design-goals-of-the-json-library" title="Link to this heading">#</a></h2>
+<p>The JSON library by Niels Lohmann was developed with several design goals in mind:</p>
+<ul class="simple">
+<li><p><strong>Intuitive Syntax</strong>: The library leverages modern C++ operator magic to provide an intuitive syntax similar to the native JSON experience in languages like Python.</p></li>
+<li><p><strong>Trivial Integration</strong>: Comprising a single header file <cite>json.hpp</cite>, this library demands no complex build systems or dependencies, facilitating easy integration into any project using vanilla C++11.</p></li>
+<li><p><strong>Serious Testing</strong>: Extensive unit tests ensure 100% coverage of the code, including exceptional behavior. Tools like Valgrind and Clang Sanitizers verify memory safety, while Google OSS-Fuzz performs continuous fuzz testing.</p></li>
+</ul>
+<p>Notably, memory efficiency and speed were not primary focuses, allowing for slight trade-offs in these areas to prioritize ease of integration and reliability.</p>
 </section>
-<section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
-<div class="line-block">
-<div class="line">The process model shall provide processes, which conform to state-of the art standards</div>
-<div class="line">* ASPICE</div>
-<div class="line">* ISO 26262</div>
-<div class="line">* ISO 21434</div>
-<div class="line">* ISO PAS 8926</div>
-</div>
+<section id="baselibs-project-context">
+<h2>Baselibs Project Context<a class="headerlink" href="#baselibs-project-context" title="Link to this heading">#</a></h2>
+<p>The integration effort is situated within the baselibs project, aimed at qualifying library performance and compliance with internal standards. As part of this project, the TSF process has been embedded into the score repository to generate and analyze evidence regarding software trustability.</p>
 </section>
-<section id="approach">
-<h2>Approach<a class="headerlink" href="#approach" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>We aim for a process model as common basis for process documentation (compare figure below).</p></li>
-<li><p>We work code centric (trace text as code) and iteratively.</p></li>
-<li><p>We aim to develop the process in conformance to the targeted standards (compare figure below).</p></li>
-<li><p>We aim to establish traceability from the begin (compare figure below, <cite>REPLACE_wp_traceability_model</cite>).</p></li>
-<li><p>We aim to verify conformity and traceability by tool automation as much as possible (compare figure below).</p></li>
-<li><p>We aim for an iterative collaboration model initiated by change requests (compare <cite>REPLACE_doc__contr_guideline</cite>)</p></li>
-</ol>
-<figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/score_process_model.drawio.svg"><img alt="S-CORE process model" src="../_images/score_process_model.drawio.svg" style="width: 100%;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">S-CORE process model</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
+<section id="overview-of-current-meeting-minutes">
+<h2>Overview of Current Meeting Minutes<a class="headerlink" href="#overview-of-current-meeting-minutes" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Process Overview</strong>: The baselibs project is upholding the TSF to define guidelines and generate reliable evidence of compliance, analyzing specific requirements such as MISRA and functionality consistency.</p></li>
+<li><p><strong>Challenges and Decisions</strong>:
+- Divergence from the original library code has been discussed to minimize unnecessary interference while adhering to project needs.
+- MISRA compliance is selectively applied, and necessary adaptations are considered at the upstream level where applicable.</p></li>
+<li><p><strong>Strategic Directions</strong>:
+- Evidence requirements are mapped and analyzed for gaps, leading to possible code amendments or forks.
+- Questions concerning the library’s behavior are systematically answered, providing coverage details and tracing requirements to standards like ISO.</p></li>
+</ul>
+<p>Find more descriptions on the ongoing process and requirements at [Eclipse Process Description](<a class="reference external" href="https://eclipse-score.github.io/process_description/pr-27/trustable/index.html">https://eclipse-score.github.io/process_description/pr-27/trustable/index.html</a>).</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>The application of the Trustable Software Framework to Niels Lohmann’s JSON library involves a comprehensive assessment to ensure it meets our high-level requirements for external software. Key actions include formalizing necessary functionalities, addressing feature requests from SCORE, and integrating trustable evidence into a coherent project workflow. The library is maintained with stringent quality checks and evidence generation processes, illustrating a commitment to high standards and the practicality required for certifiable software projects.</p>
 </section>
 </section>
 
@@ -522,9 +517,10 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-goals-of-the-json-library">Design Goals of the JSON Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baselibs-project-context">Baselibs Project Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-current-meeting-minutes">Overview of Current Meeting Minutes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
 
