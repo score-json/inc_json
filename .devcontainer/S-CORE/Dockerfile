@@ -46,10 +46,6 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 
-# RUN python3 -m pipx ensurepath && \
-#     pipx install sphinx==8.2.3
-
-# WORKDIR /app
 RUN python3 -m venv venv && \
     . venv/bin/activate && \
     pip install sphinx==8.2.3 sphinx-design sphinx-needs sphinxcontrib.plantuml
@@ -71,6 +67,3 @@ RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.26.0/bazeli
 RUN wget https://github.com/bazelbuild/buildtools/releases/download/v8.2.0/buildifier-linux-amd64 && \
     chmod +x buildifier-linux-amd64 && \
     mv buildifier-linux-amd64 /usr/bin/buildifier
-
-# Copy your application code into the container
-# COPY . /app
