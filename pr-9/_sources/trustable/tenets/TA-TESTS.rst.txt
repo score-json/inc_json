@@ -60,7 +60,7 @@ All of the above must ensure that test results are retroactively reproducible, w
 Evidence
 --------
 
-Test Overview (TBD)
+Test Overview
 ~~~~~~~~~~~~~~~~~~~~~~
 
 .. csv-table:: List of Tests and Descriptions
@@ -193,48 +193,22 @@ The following is a list of fault inductions designed to test the robustness and 
     Leverage fuzz testing by feeding random and unpredictable JSON data to observe how the system responds to uncertain inputs.
 
 
-Test Environments for Software Testing (TBD)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Test Environments for Software Testing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following list outlines various test environments used to ensure comprehensive testing coverage:
+The Niels Lohmann JSON library employs rigorous testing methodologies to ensure software reliability and high quality:
 
-1. **Development Environment**:
-   A setup similar to the development environment, often using local machines or virtual machines with appropriate development tools and libraries to test initial versions of the software.
+1. **Unit Testing**:
+   The library is heavily unit-tested, achieving 100% code coverage, including exceptional behavior scenarios. This ensures that each component functions correctly in isolation.
 
-2. **Staging Environment**:
-   An environment that mimics the production setting, allowing for testing in conditions that closely simulate real-world usage before full deployment.
+2. **Memory Leak Detection**:
+   Valgrind and Clang Sanitizers are utilized to verify that there are no memory leaks within the codebase, providing stability and reliability.
 
-3. **Production Environment**:
-   The live environment where real user data and interactions occur, used for testing with particular caution, often under controlled conditions.
+3. **Fuzz Testing**:
+   Google OSS-Fuzz performs continuous fuzz testing against all parsers 24/7. This process has effectively executed billions of test cases, identifying vulnerabilities through random and malformed input data.
 
-4. **Continuous Integration (CI) Environment**:
-   Automated testing setup integrated with CI pipelines, ensuring regular tests are executed with each code change submission.
-
-5. **Cross-Platform Testing Environment**:
-   Environments configured for testing across multiple operating systems and hardware configurations, such as Windows, macOS, Linux, and mobile platforms.
-
-6. **Cloud-Based Environment**:
-   Remote servers or services in the cloud that simulate production conditions, allowing scalability and diverse configurations for tests.
-
-7. **Virtualized Environment**:
-   Use of virtual machines or containerization (e.g., Docker) to replicate various deployment scenarios, ensuring isolated and repeatable tests.
-
-8. **Browser-Based Environment**:
-   Testing setups designed for web applications, focusing on various browsers and versions to check compatibility and performance.
-
-9. **Mobile Device Environment**:
-   Configurations designed to test mobile applications across different devices, operating systems, screen sizes, and network conditions.
-
-10. **Security Testing Environment**:
-    Specialized setup to test security features and vulnerabilities, often isolated to prevent any real-world security implications.
-
-11. **Load Testing Environment**:
-    Configurations that simulate high-traffic conditions to test performance, scalability, and reliability under stress.
-
-12. **Usability Testing Environment**:
-    Environments focused on the user experience, often involving real or simulated end-user interactions to assess usability.
-
-This diversity in test environments helps in ensuring that software systems are robust, performant, compatible, and secure across various real-world scenarios.
+4. **Quality Assurance**:
+   The project adheres to the Core Infrastructure Initiative (CII) best practices to maintain high-quality standards. This involves comprehensive policies and documentation aimed at preserving the software's integrity and security.
 
 
 Construction Configuration and Results (TBD)
