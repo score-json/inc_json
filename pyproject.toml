@@ -6,4 +6,15 @@ exclude = [
     "**/__pycache__",
     "**/.*",
     "**/bazel-*",
+
+]
+
+[tool.ruff.format]
+quote-style = "preserve"
+
+[tool.ruff]
+exclude = [
+   "nlohmann_json/docs/mkdocs/scripts",
+   "nlohmann_json/tests",
+   "nlohmann_json/tools",
 ]
