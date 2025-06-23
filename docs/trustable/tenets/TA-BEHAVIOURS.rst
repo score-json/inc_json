@@ -44,6 +44,54 @@ Methodology
    - Execute tests and document results.
    - Validate test effectiveness by analyzing outcomes.
 
+Expectations
+----------------
+
+The following expectations outline the critical behaviors and properties the Niels Lohmann JSON library is expected to provide and maintain:
+
+1. **Correctness of JSON Parsing**:
+   - Expectation: The library must correctly parse valid JSON data into the corresponding internal data structures.
+   - Verification Strategy: Functional testing with various JSON datasets, including edge cases.
+
+2. **Robust Error Handling**:
+   - Expectation: The library must gracefully handle errors in JSON input with appropriate exception throwing and error messages.
+   - Verification Strategy: Unit testing with malformed JSON inputs to ensure proper error handling.
+
+3. **High Performance and Efficiency**:
+   - Expectation: The library should perform operations such as parsing, serialization, and manipulation efficiently without unnecessary overhead.
+   - Verification Strategy: Performance testing and benchmarks compared to other libraries.
+
+4. **Memory Management and Leak Prevention**:
+   - Expectation: The library must manage memory efficiently and prevent leaks, especially during intensive operations.
+   - Verification Strategy: Testing using Valgrind and Clang Sanitizers to detect memory leaks.
+
+5. **Comprehensive Documentation and Usability**:
+   - Expectation: Documentation should be clear and comprehensive, ensuring users can effectively utilize the library's functionalities.
+   - Verification Strategy: Documentation reviews and user feedback loops.
+
+6. **Continuous Fuzz Testing**:
+   - Expectation: The library should withstand various fuzz test scenarios without breaking or exhibiting vulnerabilities.
+   - Verification Strategy: Integration with Google OSS-Fuzz for continuous fuzz testing.
+
+7. **Standards Compliance**:
+   - Expectation: The library must adhere to JSON standards and best practices defined by the Core Infrastructure Initiative (CII).
+   - Verification Strategy: Regular audits and code reviews for compliance.
+
+Evidence and Confidence Scoring
+-------------------------------
+
+- **Evidence**: Test results, documentation reviews, and continuous integration reports provide concrete evidence of expectation fulfillment.
+- **Confidence Scoring**: High confidence in correctness and performance, supported by extensive test coverage and continuous maintenance.
+
+Checklist for Expectations
+--------------------------
+
+- **Evolution of Expectations**: Regular updates based on user feedback and technological advances.
+- **Comprehensiveness**: Continuous reviews ensure all critical requirements are covered.
+- **Manipulation Considerations**: Transparent processes minimize information manipulation risks.
+- **Discovery of New Expectations**: Ongoing analysis to identify emerging expectations.
+- **Coverage Assessment**: All defined expectations have corresponding tests, with identified areas for improvement in coverage.
+
 Test Cases
 ----------
 
