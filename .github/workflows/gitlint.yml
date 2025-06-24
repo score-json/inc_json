@@ -53,4 +53,4 @@ jobs:
       - name: Run Clang-Tidy
         run: |
           chmod +x lint/clang-tidy.sh
-          /workspaces/inc_json/lint/clang-tidy.sh /workspaces/inc_json/nlohmann_json/build/compile_commands.json > clangtidy.log 2>&1
+          ./lint/clang-tidy.sh nlohmann_json/build/compile_commands.json > clangtidy.log 2>&1
