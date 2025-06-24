@@ -16,11 +16,6 @@
 Concept
 =================
 
-.. note::
-   The copyright check ignores all files in trustable and its subdirectories.
-   Modified BUILD file in process repository to be reverted after reuse implementation
-   is implemented in tooling.
-
 *The* `Trustable Software Framework (TSF) <https://codethinklabs.gitlab.io/trustable/trustable/index.html>`_
 *approach is designed for consideration of software where factors such as safety, security,
 performance, availability and reliability are considered critical. Broadly it asserts that any
@@ -36,3 +31,5 @@ To calculate the score link evidences to the Trustable Assertions (TA).
   :alt: TSF Overview
 
   TSF Overview
+
+Source and further reading: `Trustable <https://eclipse-score.github.io/process_description/pr-27/trustable/index.html>`_
