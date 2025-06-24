@@ -1,0 +1,970 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TA-TESTS &#8212; NLOHMANN JSON LIBRARY  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=940e959b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=d9fd870c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'trustable/tenets/TA-TESTS';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://score-json.github.io/inc_json/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="TA-MISBEHAVIOURS" href="TA-MISBEHAVIOURS.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.12.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Concept
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Concept
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="TA-BEHAVIOURS.html">TA-BEHAVIOURS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TA-MISBEHAVIOURS.html">TA-MISBEHAVIOURS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">TA-TESTS</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Documentation</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">TA-TESTS</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="ta-tests">
+<span id="id1"></span><h1>TA-TESTS<a class="headerlink" href="#ta-tests" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>TA-TESTS is a component of the Trustable Software Framework dedicated to ensuring the integrity and reproducibility of all tests related to the json library and its associated build and test environments. This section emphasizes constructing tests from controlled and mirrored sources, documenting any exceptions, and ensuring retroactive reproducibility of test results. TA-TESTS validates the implementation of specified tests and fault inductions, integrates test tooling and environments, and guarantees that all components operate within a controlled setup. Through automated end-to-end test execution, the framework aims to consistently achieve reproducible results, bolstering confidence in the testing process and software reliability.</p>
+</section>
+<section id="supported-requests">
+<h2>Supported Requests<a class="headerlink" href="#supported-requests" title="Link to this heading">#</a></h2>
+<p>TT-CONSTRUCTION</p>
+</section>
+<section id="supporting-items">
+<h2>Supporting Items<a class="headerlink" href="#supporting-items" title="Link to this heading">#</a></h2>
+<p>None</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>None</p>
+</section>
+<section id="fallacies">
+<h2>Fallacies<a class="headerlink" href="#fallacies" title="Link to this heading">#</a></h2>
+<p>None</p>
+</section>
+<section id="guidance">
+<h2>Guidance<a class="headerlink" href="#guidance" title="Link to this heading">#</a></h2>
+<p>This assertion is satisfied to the extent that we:</p>
+<ul class="simple">
+<li><p>have implemented all of the tests specified in <a class="reference internal" href="TA-BEHAVIOURS.html"><span class="doc">TA-BEHAVIOURS</span></a></p></li>
+<li><p>have implemented fault inductions specified in <a class="reference internal" href="TA-MISBEHAVIOURS.html"><span class="doc">TA-MISBEHAVIOURS</span></a></p></li>
+<li><p>have implemented or integrated test tooling and environments for these</p></li>
+<li><p>can demonstrate that all of these are constructed from:
+- change-managed sources (see TA-UPDATES)
+- mirrored sources (see TA-SUPPLY_CHAIN)</p></li>
+</ul>
+<p>All of the above must ensure that test results are retroactively reproducible, which is easily achieved through automated end-to-end test execution alongside necessary environment setups. Note that with non-deterministic software, exact results may not be reproducible, but high-level takeaways and exact setup should still be possible. <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/doorstop/TA.html#ta-tests">here</a></p>
+</section>
+<section id="evidence">
+<h2>Evidence<a class="headerlink" href="#evidence" title="Link to this heading">#</a></h2>
+<section id="test-overview">
+<h3>Test Overview<a class="headerlink" href="#test-overview" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">List of Tests and Descriptions</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Test Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>fuzzer-driver_afl.cpp</p></td>
+<td><p>Tests integration with AFL (American Fuzzy Lop) fuzzer for discovering edge cases and vulnerabilities in JSON parsing.</p></td>
+</tr>
+<tr class="row-odd"><td><p>fuzzer-parse_bjdata.cpp</p></td>
+<td><p>Focuses on parsing BJData, a binary format related to JSON-capable of handling similar data structures.</p></td>
+</tr>
+<tr class="row-even"><td><p>fuzzer-parse_bson.cpp</p></td>
+<td><p>Examines the parsing of BSON (Binary JSON) data to ensure reliable and accurate conversion.</p></td>
+</tr>
+<tr class="row-odd"><td><p>fuzzer-parse_cbor.cpp</p></td>
+<td><p>Tests CBOR (Concise Binary Object Representation), ensuring correct parsing and handling of binary data.</p></td>
+</tr>
+<tr class="row-even"><td><p>fuzzer-parse_json.cpp</p></td>
+<td><p>Evaluates the JSON parsing functionality with fuzzing to test the robustness against malformed inputs.</p></td>
+</tr>
+<tr class="row-odd"><td><p>fuzzer-parse_msgpack.cpp</p></td>
+<td><p>Focuses on MessagePack, a binary format, and tests its parsing for consistency with JSON structures.</p></td>
+</tr>
+<tr class="row-even"><td><p>fuzzer-parse_ubjson.cpp</p></td>
+<td><p>Tests UBJSON (Universal Binary JSON), ensuring accurate parsing of its structured binary data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>make_test_data_available.hpp</p></td>
+<td><p>Provides utilities and functions to set up and manage test data within the test environment.</p></td>
+</tr>
+<tr class="row-even"><td><p>test_utils.hpp</p></td>
+<td><p>Contains utility functions and helpers that are shared across different tests for JSON functionalities.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-32bit.cpp</p></td>
+<td><p>Ensures compatibility and correct behavior of the JSON library when used on 32-bit systems.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-algorithms.cpp</p></td>
+<td><p>Tests various STL algorithms applied on JSON data, ensuring they work correctly with JSON structures.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-allocator.cpp</p></td>
+<td><p>Examines custom memory allocation strategies within the JSON library.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-alt-string.cpp</p></td>
+<td><p>Tests alternative string handling mechanisms and their integration within JSON functionality.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-assert_macro.cpp</p></td>
+<td><p>Verifies the behavior of assertion macros used throughout the JSON library.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-binary_formats.cpp</p></td>
+<td><p>Tests across different binary formats supported by the library, such as CBOR and MessagePack.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-bjdata.cpp</p></td>
+<td><p>Focuses on BJData handling, ensuring correct parsing and functionality.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-bson.cpp</p></td>
+<td><p>Evaluates BSON format behavior and its integration within the JSON library.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-byte_container_with_subtype.cpp</p></td>
+<td><p>Examines containers with specific byte subtypes, ensuring they work seamlessly.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-capacity.cpp</p></td>
+<td><p>Tests the capacity management functionalities in JSON objects.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-cbor.cpp</p></td>
+<td><p>Focuses specifically on the CBOR format, ensuring its correct interpretation.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-class_const_iterator.cpp</p></td>
+<td><p>Tests constant iterators in JSON structures for correct traversal.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-class_iterator.cpp</p></td>
+<td><p>Tests general iterator functionalities within JSON structures.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-class_lexer.cpp</p></td>
+<td><p>Examines lexer functionalities that parse JSON text into tokens.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-class_parser.cpp</p></td>
+<td><p>Evaluates parser behavior, including new options like trailing commas.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-class_parser_diagnostic_positions.cpp</p></td>
+<td><p>Tests parser diagnostics related to the position of errors in JSON text.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-comparison.cpp</p></td>
+<td><p>Verifies comparison operations between JSON objects and values.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-concepts.cpp</p></td>
+<td><p>Tests C++ concepts employed within the JSON library for compatibility and correctness.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-constructor1.cpp</p></td>
+<td><p>Examines JSON construction from various data types.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-constructor2.cpp</p></td>
+<td><p>Further tests construction robustness, handling edge cases and diverse input types.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-convenience.cpp</p></td>
+<td><p>Tests convenience methods provided by the JSON library for ease of use.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-conversions.cpp</p></td>
+<td><p>Validates conversion routines between JSON objects and various C++ types.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-custom-base-class.cpp</p></td>
+<td><p>Tests the inheritance and customization options for JSON objects.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-deserialization.cpp</p></td>
+<td><p>Ensures deserialization routines work correctly across different formats.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-diagnostic-positions-only.cpp</p></td>
+<td><p>Focuses on diagnostics output to help identify parsing issues.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-diagnostic-positions.cpp</p></td>
+<td><p>Comprehensive tests on diagnostic outputs related to parsing.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-diagnostics.cpp</p></td>
+<td><p>A broader suite for diagnostics functionality throughout the library.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-disabled_exceptions.cpp</p></td>
+<td><p>Verifies behavior when exceptions are disabled within JSON operations.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-element_access1.cpp</p></td>
+<td><p>Tests access patterns on JSON elements, validating methods for retrieval.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-element_access2.cpp</p></td>
+<td><p>Extends element access testing, including multi-level deep accesses.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-hash.cpp</p></td>
+<td><p>Evaluates hashing mechanisms and performance within JSON operations.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-inspection.cpp</p></td>
+<td><p>Tests inspection capabilities, allowing introspection within JSON structures.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-items.cpp</p></td>
+<td><p>Validates methods for iterating and accessing items in JSON containers.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-iterators1.cpp</p></td>
+<td><p>Tests specific iterator patterns for JSON arrays and objects.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-iterators2.cpp</p></td>
+<td><p>Examines advanced iterator functionality, handling complex data traversal.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-iterators3.cpp</p></td>
+<td><p>Comprehensive iterator tests across all types of JSON data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-json_patch.cpp</p></td>
+<td><p>Ensures JSON Patch operations modify JSON objects correctly.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-json_pointer.cpp</p></td>
+<td><p>Tests JSON Pointer operations, ensuring they accurately retrieve nested values.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-large_json.cpp</p></td>
+<td><p>Examines parsing and performance with exceptionally large JSON documents.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-locale-cpp.cpp</p></td>
+<td><p>Tests JSON parsing behavior across different locales.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-merge_patch.cpp</p></td>
+<td><p>Validates Merge Patch functionality, ensuring correct application of patches.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-meta.cpp</p></td>
+<td><p>Tests metadata handling and integration within JSON structures.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-modifiers.cpp</p></td>
+<td><p>Validates modifier operations like insertions and deletions on JSON objects.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-msgpack.cpp</p></td>
+<td><p>Tests MessagePack format handling, ensuring it converts accurately to/from JSON.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-no-mem-leak-on-adl-serialize.cpp</p></td>
+<td><p>Confirms serialization does not cause memory leaks due to ADL (argument-dependent lookup).</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-noexcept.cpp</p></td>
+<td><p>Tests that operations marked as noexcept do not throw exceptions under any circumstances.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-ordered_json.cpp</p></td>
+<td><p>Ensures ordered JSON objects maintain expected key order during operations.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-ordered_map.cpp</p></td>
+<td><p>Tests ordered maps used within the JSON library.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-pointer_access.cpp</p></td>
+<td><p>Verifies correct behavior of pointer-based JSON access.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-readme.cpp</p></td>
+<td><p>Tests examples and functionalities mentioned in the README documentation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-reference_access.cpp</p></td>
+<td><p>Tests reference-based access patterns for JSON data.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-regression1.cpp</p></td>
+<td><p>Verifies previous bug fixes to ensure they don’t reappear (regression testing).</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-regression2.cpp</p></td>
+<td><p>Further regression tests to maintain stability after updates.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-serialization.cpp</p></td>
+<td><p>Tests serialization processes, ensuring correct conversion from JSON to text.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-testsuites.cpp</p></td>
+<td><p>Comprehensive test suites combining various JSON functionalities.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-to_chars.cpp</p></td>
+<td><p>Evaluates performance and correctness of ‘to_chars’ conversions.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-type_traits.cpp</p></td>
+<td><p>Tests C++ type traits used within the JSON library for compatibility.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-ubjson.cpp</p></td>
+<td><p>Verifies UBJSON format handling and conversion processes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-udl.cpp</p></td>
+<td><p>Tests User-Defined Literals (UDLs) for creating JSON objects from literals.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-udt.cpp</p></td>
+<td><p>Tests User-Defined Types (UDTs) for seamless compatibility with JSON functionalities.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-udt_macro.cpp</p></td>
+<td><p>Evaluates macros for working with User-Defined Types in JSON.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-unicode1.cpp</p></td>
+<td><p>Tests handling of various Unicode characters and encodings.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-unicode2.cpp</p></td>
+<td><p>Extends Unicode handling, ensuring correct parsing and representation.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-unicode3.cpp</p></td>
+<td><p>Comprehensive tests for Unicode support throughout the library.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-unicode4.cpp</p></td>
+<td><p>Ensures compatibility and correct behavior with complex Unicode sequences.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-unicode5.cpp</p></td>
+<td><p>Further tests for edge cases in Unicode handling.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-user_defined_input.cpp</p></td>
+<td><p>Verifies support for user-defined input types and their integration with JSON parsing.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit-windows_h.cpp</p></td>
+<td><p>Tests integration of JSON functionalities within a Windows environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit-wstring.cpp</p></td>
+<td><p>Tests handling and conversion of wide strings within JSON operations.</p></td>
+</tr>
+<tr class="row-even"><td><p>unit.cpp</p></td>
+<td><p>General tests covering various aspects of JSON’s core functionalities.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="fault-inductions-tbd">
+<h3>Fault inductions (TBD)<a class="headerlink" href="#fault-inductions-tbd" title="Link to this heading">#</a></h3>
+<p>The following is a list of fault inductions designed to test the robustness and reliability of a JSON library:</p>
+<ol class="arabic simple">
+<li><p><strong>Invalid JSON Format</strong>:
+Attempt to parse malformed JSON strings that do not adhere to the standard JSON syntax, such as missing braces, brackets, or quotation marks.</p></li>
+<li><p><strong>Non-UTF-8 Encodings</strong>:
+Feed the parser data in encodings other than UTF-8, such as UTF-16 or ISO-8859-1, to test how encoding errors are handled.</p></li>
+<li><p><strong>Extremely Large JSON</strong>:
+Provide JSON files or strings that are significantly larger than typical sizes to test memory handling and performance.</p></li>
+<li><p><strong>Deeply Nested JSON Structures</strong>:
+Use JSON strings with excessive nesting levels to test recursion limits or stack overflows.</p></li>
+<li><p><strong>Circular References</strong>:
+Attempt to create objects with circular references, which are non-standard in JSON, to test detection of such anomalies.</p></li>
+<li><p><strong>Special Character Handling</strong>:
+Test JSON strings that contain special characters or escape sequences to ensure correct parsing and encoding.</p></li>
+<li><p><strong>Boundary Value Inputs</strong>:
+Use JSON inputs with values at or beyond expected minimum and maximum limits, such as boundary numbers for integer types.</p></li>
+<li><p><strong>Unexpected Data Types</strong>:
+Provide invalid or unexpected data types within JSON (such as functions or undefined symbols) and verify proper error detection and handling.</p></li>
+<li><p><strong>Concurrent Access</strong>:
+Induce faults by performing concurrent access to JSON parsing and manipulation, testing thread safety and potential race conditions.</p></li>
+<li><p><strong>SAX Parsing Faults</strong>:
+For libraries supporting SAX (streaming APIs), present streaming data with interruptions or unexpected terminations.</p></li>
+<li><p><strong>Inconsistent Data Types</strong>:
+Use JSON structures with inconsistent data types across similar keys or arrays, testing robustness in type checking.</p></li>
+<li><p><strong>Memory Leak Induction</strong>:
+Monitor specifically for scenarios that may expose potential memory leaks during heavy or repeated JSON operations.</p></li>
+<li><p><strong>Randomized Inputs</strong>:
+Leverage fuzz testing by feeding random and unpredictable JSON data to observe how the system responds to uncertain inputs.</p></li>
+</ol>
+</section>
+<section id="test-environments-for-software-testing">
+<h3>Test Environments for Software Testing<a class="headerlink" href="#test-environments-for-software-testing" title="Link to this heading">#</a></h3>
+<p>The Niels Lohmann JSON library employs rigorous testing methodologies to ensure software reliability and high quality:</p>
+<ol class="arabic simple">
+<li><p><strong>Unit Testing</strong>:
+The library is heavily unit-tested, achieving 100% code coverage, including exceptional behavior scenarios. This ensures that each component functions correctly in isolation.</p></li>
+<li><p><strong>Memory Leak Detection</strong>:
+Valgrind and Clang Sanitizers are utilized to verify that there are no memory leaks within the codebase, providing stability and reliability.</p></li>
+<li><p><strong>Fuzz Testing</strong>:
+Google OSS-Fuzz performs continuous fuzz testing against all parsers 24/7. This process has effectively executed billions of test cases, identifying vulnerabilities through random and malformed input data.</p></li>
+<li><p><strong>Quality Assurance</strong>:
+The project adheres to the Core Infrastructure Initiative (CII) best practices to maintain high-quality standards. This involves comprehensive policies and documentation aimed at preserving the software’s integrity and security.</p></li>
+</ol>
+</section>
+<section id="construction-configuration-and-results-tbd">
+<h3>Construction Configuration and Results (TBD)<a class="headerlink" href="#construction-configuration-and-results-tbd" title="Link to this heading">#</a></h3>
+<p><strong>Construction Configuration</strong></p>
+<p>The construction configuration outlines the setup and parameters used in building and testing the software system. This is crucial for ensuring consistency and reproducibility across different test environments. Key aspects include:</p>
+<ol class="arabic simple">
+<li><p><strong>Build Tools and Version</strong>:
+- <strong>Compiler</strong>: GCC version X.Y.Z or equivalent
+- <strong>Build System</strong>: CMake or Bazel, version X.Y
+- <strong>Dependencies</strong>: Specific versions of libraries and frameworks, e.g., Boost 1.75 or JSON for Modern C++ 3.11</p></li>
+<li><p><strong>Environment Setup</strong>:
+- <strong>Operating System</strong>: Ubuntu 20.04, Windows 10, or macOS Catalina
+- <strong>Hardware Requirements</strong>: Minimum RAM, CPU specifications necessary for running tests
+- <strong>Network Configuration</strong>: Proxy settings, firewall configurations for connecting and testing in a networked setup</p></li>
+<li><p><strong>Configuration Management</strong>:
+- <strong>Source Control</strong>: Git repository at specific branch or commit; utilizing version control best practices
+- <strong>Build Scripts</strong>: Automated scripts for setting up and performing builds
+- <strong>Virtualization/Containers</strong>: Docker images or VMs for isolated testing environments</p></li>
+<li><p><strong>Testing Tools</strong>:
+- <strong>Test Frameworks</strong>: Unit testing using Catch2, integration testing with custom test suites
+- <strong>Automation Tools</strong>: Jenkins for CI/CD, Selenium for browser-based tests</p></li>
+</ol>
+<p><strong>Construction Results</strong></p>
+<p>The results section provides an overview of the outcomes from the construction phase, emphasizing the process’s success and areas for potential improvements. Key results might include:</p>
+<ol class="arabic simple">
+<li><p><strong>Build Success Rate</strong>:
+- Percentage of successful builds compared to attempted builds over a defined period
+- Metrics related to build failure reasons and resolutions</p></li>
+<li><p><strong>Test Coverage</strong>:
+- Percentage of code covered by tests; ideally aiming for 80% or higher
+- Identification of areas with insufficient coverage and plans for additional tests</p></li>
+<li><p><strong>Performance Benchmarks</strong>:
+- Execution times, resource utilization metrics from tests
+- Comparison to baseline figures and expected targets</p></li>
+<li><p><strong>Error and Issue Tracking</strong>:
+- Summary of bugs found during test phases; categorized by severity and type
+- Steps taken to resolve critical issues</p></li>
+<li><p><strong>Reproducibility Assurance</strong>:
+- Confirmation that results can be replicated in different environments or setups
+- Documentation of any deviations and corrective measures</p></li>
+</ol>
+<p>This structured approach helps ensure all phases of construction and testing are thoroughly documented and reviewed, supporting both ongoing development efforts and future audits.</p>
+</section>
+</section>
+<section id="confidence-scoring">
+<h2>Confidence Scoring<a class="headerlink" href="#confidence-scoring" title="Link to this heading">#</a></h2>
+<p>Confidence scoring for TA-TESTS is based on the presence of tests and our confidence in their implementation and construction.</p>
+</section>
+<section id="checklist">
+<h2>Checklist<a class="headerlink" href="#checklist" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>How confident are we that we’ve implemented all of the specified tests?</p></li>
+<li><p>How confident are we that we’ve implemented all of the specified fault inductions?</p></li>
+<li><p>How confident are we that we have test tooling and environments enabling us to execute these tests and fault inductions?</p></li>
+<li><p>How confident are we that all test components are taken from within our controlled environment?</p></li>
+<li><p>How confident are we that all of the test environments we are using are also under our control?</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="TA-MISBEHAVIOURS.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">TA-MISBEHAVIOURS</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-requests">Supported Requests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supporting-items">Supporting Items</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fallacies">Fallacies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guidance">Guidance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evidence">Evidence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-overview">Test Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fault-inductions-tbd">Fault inductions (TBD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-environments-for-software-testing">Test Environments for Software Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construction-configuration-and-results-tbd">Construction Configuration and Results (TBD)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-scoring">Confidence Scoring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist">Checklist</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/score-json/inc_json/edit/main/docs/trustable/tenets/TA-TESTS.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/trustable/tenets/TA-TESTS.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
