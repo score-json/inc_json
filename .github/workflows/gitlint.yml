@@ -47,7 +47,11 @@ jobs:
           sudo mv bazelisk-linux-amd64 /usr/local/bin/bazel
       - name: Generate Compile Commands
         run: |
+          mkdir build
+          cmake --build .
           cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON  -S nlohmann_json -B nlohmann_json/build
+
       - name: Run Clang-Tidy
         run: |
+          chmod +x lint/clang-tidy.sh
           /workspaces/inc_json/lint/clang-tidy.sh /workspaces/inc_json/nlohmann_json/build/compile_commands.json > clangtidy.log 2>&1
