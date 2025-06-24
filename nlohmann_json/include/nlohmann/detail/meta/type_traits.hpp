@@ -255,7 +255,7 @@ struct char_traits<std::byte> : std::char_traits<char>
 
     static char_type to_char_type(int_type i) noexcept
     {
-        return std::byte(static_cast<unsigned char>(i));
+        return static_cast<std::byte>(static_cast<unsigned char>(i));
     }
 
     static constexpr int_type eof() noexcept

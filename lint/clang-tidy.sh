@@ -59,8 +59,8 @@ if [ -z "$target_source" ]; then
 
 	pushd "$PROJECT_ROOT" > /dev/null
 	shopt -s globstar
-	for f in src/**/*.cpp nlohmann_json/include/nlohmann/**/*.cpp nlohmann_json/include/nlohmann/**/*.hpp; do
-    if [[ ! ("$f" =~ "build/") ]]; then
+	for f in nlohmann_json/include/nlohmann/**/*.hpp; do
+    if [[ ! "$f" =~ "build/"  && ! "$f" =~ "thirdparty/" ]]; then
         echo
         echo "Checking file '$f'"
         $LINTER -p "$(dirname "$compile_database")" "$f"

@@ -10,6 +10,7 @@
 
 // restore clang diagnostic settings
 #if defined(__clang__)
+// NOLINTNEXTLINE(clang-diagnostic-unknown-pragmas)
     #pragma clang diagnostic pop
 #endif
 
