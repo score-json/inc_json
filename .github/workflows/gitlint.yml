@@ -48,7 +48,6 @@ jobs:
       - name: Generate Compile Commands
         run: |
           mkdir build
-          cmake --build .
           cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON  -S nlohmann_json -B nlohmann_json/build
 
       - name: Run Clang-Tidy
