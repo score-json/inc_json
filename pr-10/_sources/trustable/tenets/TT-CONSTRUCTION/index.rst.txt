@@ -12,19 +12,14 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _documentation:
+.. _tt_construction:
 
-Trustable Tenets
+TT-CONSTRUCTION
 =================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Trustable Tenets
+   :caption: TT-CONSTRUCTION
    :glob:
 
-   TT-PROVENANCE/index
-   TT-CONSTRUCTION/index
-   TT-CHANGES/index
-   TT-EXPECTATIONS/index
-   TT-RESULTS/index
-   TT-CONFIDENCE/index
+   TA-TESTS
