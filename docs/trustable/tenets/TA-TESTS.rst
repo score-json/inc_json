@@ -20,7 +20,7 @@ TA-TESTS
 Overview
 --------
 
-All tests for the json-library, along with their build and test environments, are constructed from controlled/mirrored sources and are reproducible, with any exceptions documented.
+TA-TESTS is a component of the Trustable Software Framework dedicated to ensuring the integrity and reproducibility of all tests related to the json library and its associated build and test environments. This section emphasizes constructing tests from controlled and mirrored sources, documenting any exceptions, and ensuring retroactive reproducibility of test results. TA-TESTS validates the implementation of specified tests and fault inductions, integrates test tooling and environments, and guarantees that all components operate within a controlled setup. Through automated end-to-end test execution, the framework aims to consistently achieve reproducible results, bolstering confidence in the testing process and software reliability.
 
 Supported Requests
 ------------------
@@ -54,7 +54,7 @@ This assertion is satisfied to the extent that we:
   - change-managed sources (see TA-UPDATES)
   - mirrored sources (see TA-SUPPLY_CHAIN)
 
-All of the above must ensure that test results are retroactively reproducible, which is easily achieved through automated end-to-end test execution alongside necessary environment setups. Note that with non-deterministic software, exact results may not be reproducible, but high-level takeaways and exact setup should still be possible.
+All of the above must ensure that test results are retroactively reproducible, which is easily achieved through automated end-to-end test execution alongside necessary environment setups. Note that with non-deterministic software, exact results may not be reproducible, but high-level takeaways and exact setup should still be possible. `here <https://codethinklabs.gitlab.io/trustable/trustable/doorstop/TA.html#ta-tests>`_
 
 
 Evidence
