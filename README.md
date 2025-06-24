@@ -32,13 +32,6 @@ This repository provides the aspired setup for projects using **C++** and **Baze
 
 ---
 
-### Additional Documentation
-
-- trustable/tenets/TA-SUPPLY_CHAIN
-- trustable/tenets/TA-UPDATES
-- trustable/tenets/TA-BEHAVIOURS
-- trustable/tenets/TA-MISBEHAVIOURS
-
 ## Quick Start
 
 To build the module, run:
@@ -62,6 +55,13 @@ python3 -m venv venv && \
 pip install sphinx==8.2.3 sphinx-design sphinx-needs sphinxcontrib.plantuml
 cd docs
 sphinx-build -b html . _build
+python3 -m http.server --directory _build
+```
+
+or run (this will create SCORE-formated site):
+
+```bash
+bazel run //docs:incremental
 python3 -m http.server --directory _build
 ```
 
