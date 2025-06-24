@@ -20,7 +20,7 @@ TA-MISBEHAVIOURS
 Overview
 --------
 
-The TA-MISBEHAVIOURS documentation provides a detailed exploration of identifying, analyzing, and resolving misbehaviors within the Trustable Software Framework. This section outlines the objectives, methodologies, and outcomes related to misbehavior assessment. Further reading can be found `here <https://codethinklabs.gitlab.io/trustable/trustable/doorstop/TA.html#ta-misbehaviours>`_
+The TA-MISBEHAVIOURS documentation provides a detailed exploration of identifying, analyzing, and resolving misbehaviors within the Trustable Software Framework. This section outlines the objectives, methodologies, and outcomes related to misbehavior assessment. Further reading can be found `here <https://codethinklabs.gitlab.io/trustable/trustable/doorstop/TA.html#ta-misbehaviours>`_.
 
 Objectives
 ----------

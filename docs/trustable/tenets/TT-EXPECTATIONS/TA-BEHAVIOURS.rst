@@ -20,7 +20,7 @@ TA-BEHAVIOURS
 Overview
 --------
 
-The TA-BEHAVIORS documentation provides a comprehensive guide to the assessment and testing of expected behaviors within the Trustable Software Framework. This section outlines the objectives, methodologies, and outcomes related to trust assessment. Further reading can be found `here <https://codethinklabs.gitlab.io/trustable/trustable/doorstop/TA.html#ta-behaviours>`_
+The TA-BEHAVIORS documentation provides a comprehensive guide to the assessment and testing of expected behaviors within the Trustable Software Framework. This section outlines the objectives, methodologies, and outcomes related to trust assessment. Further reading can be found `here <https://codethinklabs.gitlab.io/trustable/trustable/doorstop/TA.html#ta-behaviours>`_.
 
 Objectives
 ----------

@@ -20,41 +20,22 @@ TA-TESTS
 Overview
 --------
 
-TA-TESTS is a component of the Trustable Software Framework dedicated to ensuring the integrity and reproducibility of all tests related to the json library and its associated build and test environments. This section emphasizes constructing tests from controlled and mirrored sources, documenting any exceptions, and ensuring retroactive reproducibility of test results. TA-TESTS validates the implementation of specified tests and fault inductions, integrates test tooling and environments, and guarantees that all components operate within a controlled setup. Through automated end-to-end test execution, the framework aims to consistently achieve reproducible results, bolstering confidence in the testing process and software reliability.
+TA-TESTS is a component of the Trustable Software Framework dedicated to ensuring the integrity and reproducibility of all tests related to the json library and its associated build and test environments. This section emphasizes constructing tests from controlled and mirrored sources, documenting any exceptions, and ensuring retroactive reproducibility of test results. TA-TESTS validates the implementation of specified tests and fault inductions, integrates test tooling and environments, and guarantees that all components operate within a controlled setup. Through automated end-to-end test execution, the framework aims to consistently achieve reproducible results, bolstering confidence in the testing process and software reliability. Further reading can be found `here <https://codethinklabs.gitlab.io/trustable/trustable/doorstop/TA.html#ta-tests>`_.
 
-Supported Requests
-------------------
-
-TT-CONSTRUCTION
-
-Supporting Items
-----------------
-
-None
-
-References
-----------
-
-None
-
-Fallacies
----------
-
-None
 
 Guidance
 --------
 
 This assertion is satisfied to the extent that we:
 
-- have implemented all of the tests specified in :doc:`TA-BEHAVIOURS`
-- have implemented fault inductions specified in :doc:`TA-MISBEHAVIOURS`
+- have implemented all of the tests specified in :doc:`tenets/TT-EXPECTATIONS/TA-BEHAVIOURS`
+- have implemented fault inductions specified in :doc:`tenets/TT-EXPECTATIONS/TA-MISBEHAVIOURS`
 - have implemented or integrated test tooling and environments for these
 - can demonstrate that all of these are constructed from:
   - change-managed sources (see TA-UPDATES)
   - mirrored sources (see TA-SUPPLY_CHAIN)
 
-All of the above must ensure that test results are retroactively reproducible, which is easily achieved through automated end-to-end test execution alongside necessary environment setups. Note that with non-deterministic software, exact results may not be reproducible, but high-level takeaways and exact setup should still be possible. `here <https://codethinklabs.gitlab.io/trustable/trustable/doorstop/TA.html#ta-tests>`_
+All of the above must ensure that test results are retroactively reproducible, which is easily achieved through automated end-to-end test execution alongside necessary environment setups. Note that with non-deterministic software, exact results may not be reproducible, but high-level takeaways and exact setup should still be possible. `here <https://codethinklabs.gitlab.io/trustable/trustable/doorstop/TA.html#ta-tests>`_.
 
 
 Evidence
