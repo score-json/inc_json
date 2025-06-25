@@ -28,14 +28,14 @@ Guidance
 
 This assertion is satisfied to the extent that we:
 
-- have implemented all of the tests specified in :doc:`tenets/TT-EXPECTATIONS/TA-BEHAVIOURS`
-- have implemented fault inductions specified in :doc:`tenets/TT-EXPECTATIONS/TA-MISBEHAVIOURS`
+- have implemented all of the tests specified in :doc:`../TT-EXPECTATIONS/TA-BEHAVIOURS`
+- have implemented fault inductions specified in :doc:`../TT-EXPECTATIONS/TA-MISBEHAVIOURS`
 - have implemented or integrated test tooling and environments for these
 - can demonstrate that all of these are constructed from:
   - change-managed sources (see TA-UPDATES)
   - mirrored sources (see TA-SUPPLY_CHAIN)
 
-All of the above must ensure that test results are retroactively reproducible, which is easily achieved through automated end-to-end test execution alongside necessary environment setups. Note that with non-deterministic software, exact results may not be reproducible, but high-level takeaways and exact setup should still be possible. `here <https://codethinklabs.gitlab.io/trustable/trustable/doorstop/TA.html#ta-tests>`_.
+All of the above must ensure that test results are retroactively reproducible, which is easily achieved through automated end-to-end test execution alongside necessary environment setups. Note that with non-deterministic software, exact results may not be reproducible, but high-level takeaways and exact setup should still be possible.
 
 
 Evidence
@@ -129,49 +129,10 @@ Test Overview
    "unit.cpp", "General tests covering various aspects of JSON's core functionalities."
 
 
-Fault inductions (TBD)
+Fault inductions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following is a list of fault inductions designed to test the robustness and reliability of a JSON library:
-
-1. **Invalid JSON Format**:
-   Attempt to parse malformed JSON strings that do not adhere to the standard JSON syntax, such as missing braces, brackets, or quotation marks.
-
-2. **Non-UTF-8 Encodings**:
-   Feed the parser data in encodings other than UTF-8, such as UTF-16 or ISO-8859-1, to test how encoding errors are handled.
-
-3. **Extremely Large JSON**:
-   Provide JSON files or strings that are significantly larger than typical sizes to test memory handling and performance.
-
-4. **Deeply Nested JSON Structures**:
-   Use JSON strings with excessive nesting levels to test recursion limits or stack overflows.
-
-5. **Circular References**:
-   Attempt to create objects with circular references, which are non-standard in JSON, to test detection of such anomalies.
-
-6. **Special Character Handling**:
-   Test JSON strings that contain special characters or escape sequences to ensure correct parsing and encoding.
-
-7. **Boundary Value Inputs**:
-   Use JSON inputs with values at or beyond expected minimum and maximum limits, such as boundary numbers for integer types.
-
-8. **Unexpected Data Types**:
-   Provide invalid or unexpected data types within JSON (such as functions or undefined symbols) and verify proper error detection and handling.
-
-9. **Concurrent Access**:
-   Induce faults by performing concurrent access to JSON parsing and manipulation, testing thread safety and potential race conditions.
-
-10. **SAX Parsing Faults**:
-    For libraries supporting SAX (streaming APIs), present streaming data with interruptions or unexpected terminations.
-
-11. **Inconsistent Data Types**:
-    Use JSON structures with inconsistent data types across similar keys or arrays, testing robustness in type checking.
-
-12. **Memory Leak Induction**:
-    Monitor specifically for scenarios that may expose potential memory leaks during heavy or repeated JSON operations.
-
-13. **Randomized Inputs**:
-    Leverage fuzz testing by feeding random and unpredictable JSON data to observe how the system responds to uncertain inputs.
+A comprehensive list of fault inductions is essential for testing the robustness and reliability of the JSON library. These fault inductions are designed to simulate various error conditions and edge cases that the library may encounter in real-world scenarios. You can find the list of fault inductions in the :doc:`../TT-EXPECTATIONS/TA-MISBEHAVIOURS` section of the Trustable Software Framework documentation.
 
 
 Test Environments for Software Testing
