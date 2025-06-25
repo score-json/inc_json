@@ -4,7 +4,7 @@ load("@rules_cc//cc:defs.bzl", "cc_library")
 genrule(
     name = "generate_test_data_hpp",
     outs = ["test_data.hpp"],
-    cmd = "echo '#define TEST_DATA_DIRECTORY \"json_test_data\"' > $@",
+    cmd = "echo '#define TEST_DATA_DIRECTORY \"nlohmann_json/tests/src/json_test_data\"' > $@",
 )
 
 cc_library(
