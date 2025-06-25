@@ -42,5 +42,9 @@
   {
     "version": "pr-14",
     "url": "https://score-json.github.io/inc_json/pr-14/"
+  },
+  {
+    "version": "pr-15",
+    "url": "https://score-json.github.io/inc_json/pr-15/"
   }
 ]
