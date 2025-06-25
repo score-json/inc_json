@@ -1,14 +1,13 @@
 name: test-coverage
 
 on:
-  # TODO remove before merging
   push:
     branches:
       - nilseb_add_test_coverage
   pull_request:
-      types: [opened, reopened, synchronize]
-    merge_group:
-      types: [checks_requested]
+    types: [opened, reopened, synchronize]
+  merge_group:
+    types: [checks_requested]
 
 jobs:
   ci_test_coverage:
