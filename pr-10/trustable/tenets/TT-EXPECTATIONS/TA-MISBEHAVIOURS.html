@@ -492,6 +492,38 @@
 </pre></div>
 </div>
 </section>
+<section id="fault-inductions">
+<h2>Fault Inductions<a class="headerlink" href="#fault-inductions" title="Link to this heading">#</a></h2>
+<p>The following fault inductions are designed to test the robustness of JSON parsing and handling within software systems. Each test case aims to provoke specific misbehaviors, allowing for the assessment of error handling, performance, and system stability.</p>
+<ol class="arabic simple">
+<li><p><strong>Invalid JSON Format</strong>:
+Attempt to parse malformed JSON strings that do not adhere to the standard JSON syntax, such as missing braces, brackets, or quotation marks.</p></li>
+<li><p><strong>Non-UTF-8 Encodings</strong>:
+Feed the parser data in encodings other than UTF-8, such as UTF-16 or ISO-8859-1, to test how encoding errors are handled.</p></li>
+<li><p><strong>Extremely Large JSON</strong>:
+Provide JSON files or strings that are significantly larger than typical sizes to test memory handling and performance.</p></li>
+<li><p><strong>Deeply Nested JSON Structures</strong>:
+Use JSON strings with excessive nesting levels to test recursion limits or stack overflows.</p></li>
+<li><p><strong>Circular References</strong>:
+Attempt to create objects with circular references, which are non-standard in JSON, to test detection of such anomalies.</p></li>
+<li><p><strong>Special Character Handling</strong>:
+Test JSON strings that contain special characters or escape sequences to ensure correct parsing and encoding.</p></li>
+<li><p><strong>Boundary Value Inputs</strong>:
+Use JSON inputs with values at or beyond expected minimum and maximum limits, such as boundary numbers for integer types.</p></li>
+<li><p><strong>Unexpected Data Types</strong>:
+Provide invalid or unexpected data types within JSON (such as functions or undefined symbols) and verify proper error detection and handling.</p></li>
+<li><p><strong>Concurrent Access</strong>:
+Induce faults by performing concurrent access to JSON parsing and manipulation, testing thread safety and potential race conditions.</p></li>
+<li><p><strong>SAX Parsing Faults</strong>:
+For libraries supporting SAX (streaming APIs), present streaming data with interruptions or unexpected terminations.</p></li>
+<li><p><strong>Inconsistent Data Types</strong>:
+Use JSON structures with inconsistent data types across similar keys or arrays, testing robustness in type checking.</p></li>
+<li><p><strong>Memory Leak Induction</strong>:
+Monitor specifically for scenarios that may expose potential memory leaks during heavy or repeated JSON operations.</p></li>
+<li><p><strong>Randomized Inputs</strong>:
+Leverage fuzz testing by feeding random and unpredictable JSON data to observe how the system responds to uncertain inputs.</p></li>
+</ol>
+</section>
 <section id="results">
 <h2>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -557,6 +589,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-cases">Test Cases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fault-inductions">Fault Inductions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>

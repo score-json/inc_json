@@ -462,21 +462,21 @@
 <h2>Guidance<a class="headerlink" href="#guidance" title="Link to this heading">#</a></h2>
 <p>This assertion is satisfied to the extent that we:</p>
 <ul class="simple">
-<li><p>have implemented all of the tests specified in <span class="xref std std-doc">tenets/TT-EXPECTATIONS/TA-BEHAVIOURS</span></p></li>
-<li><p>have implemented fault inductions specified in <span class="xref std std-doc">tenets/TT-EXPECTATIONS/TA-MISBEHAVIOURS</span></p></li>
+<li><p>have implemented all of the tests specified in <a class="reference internal" href="../TT-EXPECTATIONS/TA-BEHAVIOURS.html"><span class="doc">TA-BEHAVIOURS</span></a></p></li>
+<li><p>have implemented fault inductions specified in <a class="reference internal" href="../TT-EXPECTATIONS/TA-MISBEHAVIOURS.html"><span class="doc">TA-MISBEHAVIOURS</span></a></p></li>
 <li><p>have implemented or integrated test tooling and environments for these</p></li>
 <li><p>can demonstrate that all of these are constructed from:
 - change-managed sources (see TA-UPDATES)
 - mirrored sources (see TA-SUPPLY_CHAIN)</p></li>
 </ul>
-<p>All of the above must ensure that test results are retroactively reproducible, which is easily achieved through automated end-to-end test execution alongside necessary environment setups. Note that with non-deterministic software, exact results may not be reproducible, but high-level takeaways and exact setup should still be possible. <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/doorstop/TA.html#ta-tests">here</a>.</p>
+<p>All of the above must ensure that test results are retroactively reproducible, which is easily achieved through automated end-to-end test execution alongside necessary environment setups. Note that with non-deterministic software, exact results may not be reproducible, but high-level takeaways and exact setup should still be possible.</p>
 </section>
 <section id="evidence">
 <h2>Evidence<a class="headerlink" href="#evidence" title="Link to this heading">#</a></h2>
 <section id="test-overview">
 <h3>Test Overview<a class="headerlink" href="#test-overview" title="Link to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 1 </span><span class="caption-text">List of Tests and Descriptions</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">List of Tests and Descriptions</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -728,37 +728,9 @@
 </table>
 </div>
 </section>
-<section id="fault-inductions-tbd">
-<h3>Fault inductions (TBD)<a class="headerlink" href="#fault-inductions-tbd" title="Link to this heading">#</a></h3>
-<p>The following is a list of fault inductions designed to test the robustness and reliability of a JSON library:</p>
-<ol class="arabic simple">
-<li><p><strong>Invalid JSON Format</strong>:
-Attempt to parse malformed JSON strings that do not adhere to the standard JSON syntax, such as missing braces, brackets, or quotation marks.</p></li>
-<li><p><strong>Non-UTF-8 Encodings</strong>:
-Feed the parser data in encodings other than UTF-8, such as UTF-16 or ISO-8859-1, to test how encoding errors are handled.</p></li>
-<li><p><strong>Extremely Large JSON</strong>:
-Provide JSON files or strings that are significantly larger than typical sizes to test memory handling and performance.</p></li>
-<li><p><strong>Deeply Nested JSON Structures</strong>:
-Use JSON strings with excessive nesting levels to test recursion limits or stack overflows.</p></li>
-<li><p><strong>Circular References</strong>:
-Attempt to create objects with circular references, which are non-standard in JSON, to test detection of such anomalies.</p></li>
-<li><p><strong>Special Character Handling</strong>:
-Test JSON strings that contain special characters or escape sequences to ensure correct parsing and encoding.</p></li>
-<li><p><strong>Boundary Value Inputs</strong>:
-Use JSON inputs with values at or beyond expected minimum and maximum limits, such as boundary numbers for integer types.</p></li>
-<li><p><strong>Unexpected Data Types</strong>:
-Provide invalid or unexpected data types within JSON (such as functions or undefined symbols) and verify proper error detection and handling.</p></li>
-<li><p><strong>Concurrent Access</strong>:
-Induce faults by performing concurrent access to JSON parsing and manipulation, testing thread safety and potential race conditions.</p></li>
-<li><p><strong>SAX Parsing Faults</strong>:
-For libraries supporting SAX (streaming APIs), present streaming data with interruptions or unexpected terminations.</p></li>
-<li><p><strong>Inconsistent Data Types</strong>:
-Use JSON structures with inconsistent data types across similar keys or arrays, testing robustness in type checking.</p></li>
-<li><p><strong>Memory Leak Induction</strong>:
-Monitor specifically for scenarios that may expose potential memory leaks during heavy or repeated JSON operations.</p></li>
-<li><p><strong>Randomized Inputs</strong>:
-Leverage fuzz testing by feeding random and unpredictable JSON data to observe how the system responds to uncertain inputs.</p></li>
-</ol>
+<section id="fault-inductions">
+<h3>Fault inductions<a class="headerlink" href="#fault-inductions" title="Link to this heading">#</a></h3>
+<p>A comprehensive list of fault inductions is essential for testing the robustness and reliability of the JSON library. These fault inductions are designed to simulate various error conditions and edge cases that the library may encounter in real-world scenarios. You can find the list of fault inductions in the <a class="reference internal" href="../TT-EXPECTATIONS/TA-MISBEHAVIOURS.html"><span class="doc">TA-MISBEHAVIOURS</span></a> section of the Trustable Software Framework documentation.</p>
 </section>
 <section id="test-environments-for-software-testing">
 <h3>Test Environments for Software Testing<a class="headerlink" href="#test-environments-for-software-testing" title="Link to this heading">#</a></h3>
@@ -884,7 +856,7 @@ The project adheres to the Core Infrastructure Initiative (CII) best practices t
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guidance">Guidance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evidence">Evidence</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-overview">Test Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fault-inductions-tbd">Fault inductions (TBD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fault-inductions">Fault inductions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-environments-for-software-testing">Test Environments for Software Testing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construction-configuration-and-results-tbd">Construction Configuration and Results (TBD)</a></li>
 </ul>
