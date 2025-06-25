@@ -20,7 +20,7 @@ Each item in a Trustable Graph is scored with a number between 0 and 1. The scor
 
 
 Compliance for TA
-=================
+###################
 
 .. list-table:: Compliance for TA
    :widths: 25 50 25
@@ -79,7 +79,7 @@ Compliance for TA
      - 0.00
 
 Compliance for TRUSTABLE
-========================
+##########################
 
 .. list-table:: Compliance for TRUSTABLE
    :widths: 25 50 25
@@ -93,7 +93,7 @@ Compliance for TRUSTABLE
      - 0.00
 
 Compliance for TT
-=================
+###################
 
 .. list-table:: Compliance for TT
    :widths: 25 50 25
