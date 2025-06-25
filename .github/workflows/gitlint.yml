@@ -45,8 +45,12 @@ jobs:
           wget https://github.com/bazelbuild/bazelisk/releases/download/v1.12.0/bazelisk-linux-amd64
           chmod +x bazelisk-linux-amd64
           sudo mv bazelisk-linux-amd64 /usr/local/bin/bazel
-      - name: Run Bazel Build
-        run: bazel run refresh_compile_commands
+      - name: Generate Compile Commands
+        run: |
+          mkdir build
+          cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON  -S nlohmann_json -B nlohmann_json/build
+
       - name: Run Clang-Tidy
         run: |
-          find . -name '*.cpp' -print0 | xargs -0 clang-tidy /workspaces/inc_json_p/compile_commands.json --fix-errors -checks='*'
+          chmod +x lint/clang-tidy.sh
+          ./lint/clang-tidy.sh nlohmann_json/build/compile_commands.json

@@ -35,6 +35,7 @@ RUN apt-get update && \
         # pipx \
         locales \
     && apt-get clean && \
+    rm -rf bazel-bin bazel-inc_json bazel-out bazel-testlogs && \
     rm -rf /var/lib/apt/lists/*
 
 # Generate and set the locale

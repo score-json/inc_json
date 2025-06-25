@@ -20,32 +20,19 @@ on:
     types: [checks_requested]
 
 jobs:
-  auto-format-starlark:
-    runs-on: ubuntu-latest
+  format-check:
+    runs-on: ${{ vars.REPO_RUNNER_LABELS && fromJSON(vars.REPO_RUNNER_LABELS) || 'ubuntu-latest' }}
     steps:
-      - uses: actions/checkout@v4
-      - name: Install buildifier
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Bazel with shared caching
+        uses: bazel-contrib/setup-bazel@0.14.0
+        with:
+          disk-cache: true
+          repository-cache: true
+          bazelisk-cache: true
+      - name: Run Formatting Check
         run: |
-          sudo apt-get update
-          sudo apt-get install -y golang
-          go install github.com/bazelbuild/buildtools/buildifier@latest
-          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
-      - name: Auto-format Bazel/Starlark files
-        run: |
-          find . -name '*.bzl' -o -name 'BUILD' -o -name 'MODULE.bazel' | xargs buildifier
-  auto-format-yaml:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install prettier
-        run: |
-          sudo apt-get update
-          sudo apt install nodejs npm
-          npm install --global prettier
-      - name: Auto-format yaml files
-        run: |
-          prettier --write "**/*.yml"
-  formatting-check:
-    uses: eclipse-score/cicd-workflows/.github/workflows/format.yml@main
-    with:
-      bazel-target: "test //:format.check" # optional, this is the default
+          echo "Running: bazel test //:format.check"
+          bazel test //:format.check
