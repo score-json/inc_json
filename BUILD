@@ -34,7 +34,6 @@ score_virtualenv(
 copyright_checker(
     name = "copyright",
     srcs = [
-        "nlohmann_json",
         "//:BUILD",
         "//:MODULE.bazel",
     ],
