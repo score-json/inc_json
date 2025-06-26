@@ -54,6 +54,8 @@
 
 # Changes in subtree
 
+# Can submit without adding remote
+
 
 ## Design goals
 
