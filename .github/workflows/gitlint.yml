@@ -50,7 +50,29 @@ jobs:
           mkdir build
           cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON  -S nlohmann_json -B nlohmann_json/build
 
-      - name: Run Clang-Tidy
+      - name: Run linters on source
+        continue-on-error: true
+        id: source-linter
+        uses: cpp-linter/cpp-linter-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          ignore: 'tests'
+          database: nlohmann_json/build/compile_commands.json
+          version: 16
+
+      - name: Run linters on tests
+        continue-on-error: true
+        id: test-linter
+        uses: cpp-linter/cpp-linter-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          ignore: 'src|include'
+          database: nlohmann_json/build/compile_commands.json
+          version: 16
+
+      - name: Report lint failure
+        if: steps.source-linter.outputs.checks-failed > 0 || steps.test-linter.outputs.checks-failed > 0
         run: |
-          chmod +x lint/clang-tidy.sh
-          ./lint/clang-tidy.sh nlohmann_json/build/compile_commands.json
+          exit 1
