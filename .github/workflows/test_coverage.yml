@@ -1,4 +1,4 @@
-name: test-coverage
+name: Test coverage
 
 on:
   push:
@@ -36,3 +36,8 @@ jobs:
         with:
           name: code-coverage-report
           path: ${{ github.workspace }}/nlohmann_json/build/html
+      - name: Publish report to Coveralls
+        uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ${{ github.workspace }}/nlohmann_json/build/json.info.filtered.noexcept
