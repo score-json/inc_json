@@ -1,9 +1,6 @@
 name: Test coverage
 
 on:
-  push:
-    branches:
-      - nilseb_add_test_coverage
   pull_request:
     types: [opened, reopened, synchronize]
   merge_group:
