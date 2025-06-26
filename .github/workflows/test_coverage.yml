@@ -1,0 +1,40 @@
+name: Test coverage
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  merge_group:
+    types: [checks_requested]
+
+jobs:
+  ci_test_coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies and de_DE locale
+        run: |
+          sudo apt-get clean
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake lcov ninja-build make locales gcc-multilib g++-multilib
+          sudo locale-gen de_DE
+          sudo update-locale
+      - uses: actions/checkout@v4.2.2
+        with:
+          submodules: true
+      - name: Make filterbr.py executable
+        run: chmod +x nlohmann_json/tests/thirdparty/imapdl/filterbr.py
+      - name: Run CMake
+        run: cmake -S . -B build -DJSON_CI=On
+        working-directory: nlohmann_json
+      - name: Build
+        run: cmake --build build --target ci_test_coverage
+        working-directory: nlohmann_json
+      - name: Archive coverage report
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: code-coverage-report
+          path: ${{ github.workspace }}/nlohmann_json/build/html
+      - name: Publish report to Coveralls
+        uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ${{ github.workspace }}/nlohmann_json/build/json.info.filtered.noexcept
