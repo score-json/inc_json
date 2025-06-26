@@ -18,9 +18,9 @@ This repository provides the aspired setup for projects using **C++** and **Baze
 | File/Folder                         | Description                                       |
 | ----------------------------------- | ------------------------------------------------- |
 | `README.md`                         | Short description & build instructions            |
-| `src/`                              | Source files for the module                       |
-| `tests/`                            | Unit tests (UT) and integration tests (IT)        |
-| `examples/`                         | Example files used for guidance                   |
+| `nlohmann_json/include/`            | Include files for the module                      |
+| `nlohmann_json/single_include/`     | Single Header Include file for the module         |
+| `nlohmann_json/tests/`              | Unit tests (UT) and integration tests (IT)        |
 | `docs/`                             | Documentation (Doxygen/ reStructuredText)         |
 | `.github/workflows/`                | CI/CD pipelines                                   |
 | `.vscode/`                          | Recommended VS Code settings                      |
