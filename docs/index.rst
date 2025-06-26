@@ -38,19 +38,79 @@ This repository provides the aspired setup for projects using **C++** and **Baze
    trustable/report.rst
    Eclipse <https://projects.eclipse.org/projects/automotive.score>
 
-Requirements
-------------
+General Requirements
+--------------------
 
-
-.. feat_req:: JSON-Library
-   :id: feat_req__baselibs__json_library
+.. comp_req:: JSON Validation
+   :id: comp_req__json__validation
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__base_libraries
+   :satisfies: feat_req__baselibs__json_library
    :status: valid
 
-   The base libraries shall provide a JSON-Library with parsing functionality.
+   The JSON-Library provides a service to check the well-formedness of JSON data.
+
+.. comp_req:: JSON Deserialization
+   :id: comp_req__json__deserialization
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__baselibs__json_library
+   :status: valid
+
+   The JSON-Library parses JSON data according to RFC8259.
+
+User friendly API for information exchange
+-------------------------------------------
+
+.. comp_req:: Support for programming language idioms
+   :id: comp_req__json__lang_idioms
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :satisfies: feat_req__baselibs__json_library
+   :status: valid
+
+   Each public API supports the idioms of its programming language.
+
+.. comp_req:: Use programming language infrastructure
+   :id: comp_req__json__lang_infra
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :satisfies: feat_req__baselibs__json_library
+   :status: valid
+
+   Each public API uses core infrastructure of its programming language and accompanying standard libraries, whenever possible and meaningful.
+
+   Note: This includes error handling.
+
+Full testability for the user facing API
+-----------------------------------------
+
+.. comp_req:: Fully mockable public API
+   :id: comp_req__json__testability_mock_api
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :satisfies: feat_req__baselibs__json_library
+   :status: valid
+
+   The public API is fully mockable.
+
+Safety Impact
+--------------
+
+.. comp_req:: JSON library ASIL level
+   :id: comp_req__json__asil
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :satisfies: feat_req__baselibs__json_library
+   :status: valid
+
+   The JSON library supports safe communication up to ASIL-B.
 
 
 Project Layout
