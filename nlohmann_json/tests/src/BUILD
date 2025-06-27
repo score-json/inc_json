@@ -50,14 +50,14 @@ cc_test(
     ],
 )
 
+# sax_no_exception is defined in unit-disabled_exceptions.cpp and in unit-regression2.cpp which leads to a linker error when both files are included in the same test.
 
-# sax_no_exception is defined in unit-disabled_exceptions.cpp and in unit-regression2.cpp which leads to a linker error
-# when both files are included in the same test.
 cc_test(
     name = "disabled_exceptions_test",
     srcs =
         [
-            "unit.cpp","unit-disabled_exceptions.cpp",
+            "unit.cpp",
+            "unit-disabled_exceptions.cpp",
         ],
     copts = [
         '-DTEST_DATA_DIRECTORY="json_test_data"',
