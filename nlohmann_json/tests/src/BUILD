@@ -28,11 +28,37 @@ cc_test(
         ],
         exclude = [
             "unit-32bit.cpp",
+            "unit-disabled_exceptions.cpp",
         ],
     ) + select({
         "@platforms//cpu:x86_32": ["unit-32bit.cpp"],  # Only include on 32-bit x86
         "//conditions:default": [],
     }),
+    copts = [
+        '-DTEST_DATA_DIRECTORY="json_test_data"',
+    ],
+    data = glob(["json_test_data/**"]),
+    includes = [
+        ".",
+    ],
+    deps = [
+        ":test_data_header",
+        "//nlohmann_json/single_include/nlohmann:nlohmann_json",
+        "//nlohmann_json/tests/thirdparty/doctest",
+        "//nlohmann_json/tests/thirdparty/doctest:doctest_compatibility",
+        "//nlohmann_json/tests/thirdparty/fifo_map",
+    ],
+)
+
+
+# sax_no_exception is defined in unit-disabled_exceptions.cpp and in unit-regression2.cpp which leads to a linker error
+# when both files are included in the same test.
+cc_test(
+    name = "disabled_exceptions_test",
+    srcs =
+        [
+            "unit.cpp","unit-disabled_exceptions.cpp",
+        ],
     copts = [
         '-DTEST_DATA_DIRECTORY="json_test_data"',
     ],
