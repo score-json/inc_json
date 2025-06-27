@@ -1,28 +1,36 @@
 name: Trigger All Workflows
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  trigger_workflows:
+  trigger:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: List workflows
-      run: |
-        echo "Triggering all workflows in nlohmann_json/.github/workflows..."
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
 
-    - name: Trigger workflows
+    - name: Trigger Workflows
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # oder ein PAT mit repo Zugriffsrechten
       run: |
-        for workflow in $(find nlohmann_json/.github/workflows -name "*.yml" -o -name "*.yaml"); do
-          echo "Triggering $workflow"
-          # logic to trigger workflows can be added here, such as dispatching events
+        workflows=$(find nlohmann_json/.github/workflows -name "*.yml" -o -name "*.yaml")
+        repo_owner="${{ github.repository_owner }}"
+        repo_name="${{ github.event.repository.name }}"
+        for workflow in $workflows; do
+          workflow_name=$(basename $workflow .yml)
+          echo "Triggering $workflow_name"
+
+          # Sending repository_dispatch event to each workflow
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            https://api.github.com/repos/$repo_owner/$repo_name/dispatches \
+            -d "{\"event_type\": \"$workflow_name\"}"
         done
