@@ -1,0 +1,28 @@
+name: Trigger All Workflows
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  trigger_workflows:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: List workflows
+      run: |
+        echo "Triggering all workflows in nlohmann_json/.github/workflows..."
+
+    - name: Trigger workflows
+      run: |
+        for workflow in $(find nlohmann_json/.github/workflows -name "*.yml" -o -name "*.yaml"); do
+          echo "Triggering $workflow"
+          # logic to trigger workflows can be added here, such as dispatching events
+        done
