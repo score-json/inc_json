@@ -28,6 +28,7 @@ violations will result in a failed build.
         | AppleClang 16.0.0.16000026; Xcode 16         | arm64        | macOS 15.2 (Sequoia)     | GitHub    |
         | AppleClang 16.0.0.16000026; Xcode 16.1       | arm64        | macOS 15.2 (Sequoia)     | GitHub    |
         | AppleClang 16.0.0.16000026; Xcode 16.2       | arm64        | macOS 15.2 (Sequoia)     | GitHub    |
+        | AppleClang 17.0.0.17000013; Xcode 16.3       | arm64        | macOS 15.5 (Sequoia)     | GitHub    |
         | Clang 3.5.2                                  | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | Clang 3.6.2                                  | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | Clang 3.7.1                                  | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
@@ -57,6 +58,7 @@ violations will result in a failed build.
         | Clang 19.1.7                                 | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | Clang 20.1.1                                 | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | Clang 21.0.0                                 | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
+        | Emscripten 4.0.6                             | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | GNU 4.8.5                                    | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | GNU 4.9.3                                    | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | GNU 5.5.0                                    | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
@@ -75,6 +77,8 @@ violations will result in a failed build.
         | GNU 13.3.0                                   | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | GNU 14.2.0                                   | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | GNU 14.2.0                                   | arm64        | Linux 6.1.100            | Cirrus CI |
+        | GNU 15.1.0                                   | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
+        | icpc (ICC) 2021.5.0 20211109                 | x86_64       | Ubuntu 20.04.3 LTS       | GitHub    |
         | MSVC 19.0.24241.7                            | x86          | Windows 8.1              | AppVeyor  |
         | MSVC 19.16.27035.0                           | x86          | Windows-10 (Build 14393) | AppVeyor  |
         | MSVC 19.29.30157.0                           | x86          | Windows 10 (Build 17763) | GitHub    |
