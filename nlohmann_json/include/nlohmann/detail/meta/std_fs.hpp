@@ -23,7 +23,7 @@ NLOHMANN_JSON_NAMESPACE_END
 NLOHMANN_JSON_NAMESPACE_BEGIN
 namespace detail
 {
-namespace std_fs = std::filesystem;
+namespace std_fs = std::filesystem; // NOLINT(misc-unused-alias-decls)
 }  // namespace detail
 NLOHMANN_JSON_NAMESPACE_END
 #endif
