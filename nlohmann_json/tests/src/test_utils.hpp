@@ -11,7 +11,6 @@
 #include <cstdint> // uint8_t
 #include <fstream> // ifstream, istreambuf_iterator, ios
 #include <vector> // vector
-#include <iterator> // istream_iterator
 
 namespace utils
 {
