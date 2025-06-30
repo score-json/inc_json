@@ -69,3 +69,12 @@ cc_library(
     visibility = ["//visibility:public"],
     alwayslink = True,
 )
+
+cc_library(
+    name = "singleheader-json",
+    hdrs = [
+        "single_include/nlohmann/json.hpp",
+    ],
+    includes = ["single_include"],
+    visibility = ["//visibility:public"],
+)
