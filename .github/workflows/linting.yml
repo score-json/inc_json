@@ -29,54 +29,54 @@ jobs:
         uses: ./.github/actions/gitlint
         with:
           pr-number: ${{ github.event.number }}
-clang-tidy:
-    name: Clang-Tidy Check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Set up Clang
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y clang-16 clang-tidy-16
-          sudo apt-get install -y build-essential libc++-dev libc++abi-dev
-      - name: Set up Bazel
-        run: |
-          wget https://github.com/bazelbuild/bazelisk/releases/download/v1.12.0/bazelisk-linux-amd64
-          chmod +x bazelisk-linux-amd64
-          sudo mv bazelisk-linux-amd64 /usr/local/bin/bazel
-      - name: Generate Compile Commands
-        run: |
-          mkdir build
-          cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON  -S nlohmann_json -B nlohmann_json/build
+  clang-tidy:
+      name: Clang-Tidy Check
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+        - name: Set up Clang
+          run: |
+            sudo apt-get update
+            sudo apt-get install -y clang-16 clang-tidy-16
+            sudo apt-get install -y build-essential libc++-dev libc++abi-dev
+        - name: Set up Bazel
+          run: |
+            wget https://github.com/bazelbuild/bazelisk/releases/download/v1.12.0/bazelisk-linux-amd64
+            chmod +x bazelisk-linux-amd64
+            sudo mv bazelisk-linux-amd64 /usr/local/bin/bazel
+        - name: Generate Compile Commands
+          run: |
+            mkdir build
+            cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON  -S nlohmann_json -B nlohmann_json/build
 
-      - name: Run linters on source
-        continue-on-error: true
-        id: source-linter
-        uses: cpp-linter/cpp-linter-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          ignore: 'tests'
-          database: nlohmann_json/build/compile_commands.json
-          version: 16
-          style: google
-          tidy-checks: ''
+        - name: Run linters on source
+          continue-on-error: true
+          id: source-linter
+          uses: cpp-linter/cpp-linter-action@v2
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            ignore: 'tests'
+            database: nlohmann_json/build/compile_commands.json
+            version: 16
+            style: google
+            tidy-checks: ''
 
-      - name: Run linters on tests
-        continue-on-error: true
-        id: test-linter
-        uses: cpp-linter/cpp-linter-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          ignore: 'src|include'
-          database: nlohmann_json/build/compile_commands.json
-          version: 16
-          style: 'google'
-          tidy-checks = ''
+        - name: Run linters on tests
+          continue-on-error: true
+          id: test-linter
+          uses: cpp-linter/cpp-linter-action@v2
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            ignore: 'src|include'
+            database: nlohmann_json/build/compile_commands.json
+            version: 16
+            style: 'google'
+            tidy-checks: ''
 
-      - name: Report lint failure
-        if: steps.source-linter.outputs.checks-failed > 0 || steps.test-linter.outputs.checks-failed > 0
-        run: |
-          exit 1
+        - name: Report lint failure
+          if: steps.source-linter.outputs.checks-failed > 0 || steps.test-linter.outputs.checks-failed > 0
+          run: |
+            exit 1
