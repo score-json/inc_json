@@ -61,8 +61,7 @@ clang-tidy:
           database: nlohmann_json/build/compile_commands.json
           version: 16
           style: google
-          tidy-checks = ''
-
+          tidy-checks: ''
 
       - name: Run linters on tests
         continue-on-error: true
