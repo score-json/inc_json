@@ -20,15 +20,12 @@ jobs:
   ci_test_gcc:
     runs-on: ubuntu-latest
     container: gcc:latest
-    defaults:
-      run:
-        working-directory: nlohmann_json
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@6b3e96a9bc9976b8b546346fdd102effedae0ca8 # v4.02
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_gcc
 
@@ -38,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_infer
 
@@ -59,7 +56,7 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@6b3e96a9bc9976b8b546346fdd102effedae0ca8 # v4.02
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
 
@@ -76,7 +73,7 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@6b3e96a9bc9976b8b546346fdd102effedae0ca8 # v4.02
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
 
@@ -93,7 +90,7 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@6b3e96a9bc9976b8b546346fdd102effedae0ca8 # v4.02
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
 
@@ -114,7 +111,7 @@ jobs:
           sudo locale-gen de_DE
           sudo update-locale
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_coverage
       - name: Archive coverage report
@@ -137,7 +134,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Run CMake
-        run: CXX=g++-${{ matrix.compiler }} cmake -S . -B build -DJSON_CI=On
+        run: CXX=g++-${{ matrix.compiler }} cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_compiler_g++-${{ matrix.compiler }}
 
@@ -153,7 +150,7 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@6b3e96a9bc9976b8b546346fdd102effedae0ca8 # v4.02
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_compiler_default
 
@@ -173,7 +170,7 @@ jobs:
         run: echo "JSON_FORCED_GLOBAL_COMPILE_OPTIONS=-DJSON_HAS_FILESYSTEM=0;-DJSON_HAS_EXPERIMENTAL_FILESYSTEM=0" >> "$GITHUB_ENV"
         if: ${{ matrix.compiler == '7' || matrix.compiler == '8' || matrix.compiler == '9' || matrix.compiler == '10' }}
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_compiler_default
 
@@ -188,7 +185,7 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@6b3e96a9bc9976b8b546346fdd102effedae0ca8 # v4.02
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_gcc_cxx${{ matrix.standard }}
 
@@ -206,7 +203,7 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@6b3e96a9bc9976b8b546346fdd102effedae0ca8 # v4.02
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build with libc++
         run: cmake --build build --target ci_test_clang_libcxx_cxx${{ matrix.standard }}
         if: ${{ matrix.stdlib == 'libcxx' }}
@@ -220,7 +217,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_cuda_example
 
@@ -235,7 +232,7 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@6b3e96a9bc9976b8b546346fdd102effedae0ca8 # v4.02
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_module_cpp20
 
@@ -245,7 +242,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: |
           . /opt/intel/oneapi/setvars.sh
@@ -265,7 +262,7 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@6b3e96a9bc9976b8b546346fdd102effedae0ca8 # v4.02
       - name: Run CMake
-        run: cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -GNinja
+        run: cmake -S nlohmann_json -B build -DCMAKE_TOOLCHAIN_FILE=$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -GNinja
       - name: Build
         run: cmake --build build
 
@@ -282,6 +279,6 @@ jobs:
 
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
+        run: cmake -S nlohmann_json -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
