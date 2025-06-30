@@ -56,9 +56,11 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@6b3e96a9bc9976b8b546346fdd102effedae0ca8 # v4.02
       - name: Run CMake
-        run: cmake -S nlohmann_json -B build -DJSON_CI=On
+        run: cmake -S . -B build -DJSON_CI=On
+        working-directory: nlohmann_json
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
+        working-directory: nlohmann_json
 
   ci_static_analysis_clang:
     runs-on: ubuntu-latest
@@ -73,9 +75,11 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@6b3e96a9bc9976b8b546346fdd102effedae0ca8 # v4.02
       - name: Run CMake
-        run: cmake -S nlohmann_json -B build -DJSON_CI=On
+        run: cmake -S . -B build -DJSON_CI=On
+        working-directory: nlohmann_json
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
+        working-directory: nlohmann_json
 
 #   ci_cmake_options:
 #     runs-on: ubuntu-latest
