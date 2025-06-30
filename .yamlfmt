@@ -9,4 +9,4 @@ exclude:
     - nlohmann_json/.clang-tidy
     - nlohmann_json/.github
     - nlohmann_json/.cirrus.yml
-    - clang.tidy
+    - .clang-tidy
