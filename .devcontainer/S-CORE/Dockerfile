@@ -34,6 +34,7 @@ RUN apt-get update && \
         python3-venv \
         # pipx \
         locales \
+        ssh-client \
     && apt-get clean && \
     rm -rf bazel-bin bazel-inc_json bazel-out bazel-testlogs && \
     rm -rf /var/lib/apt/lists/*
@@ -68,3 +69,19 @@ RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.26.0/bazeli
 RUN wget https://github.com/bazelbuild/buildtools/releases/download/v8.2.0/buildifier-linux-amd64 && \
     chmod +x buildifier-linux-amd64 && \
     mv buildifier-linux-amd64 /usr/bin/buildifier
+
+# Create non-root user
+ARG USERNAME=developer
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    # Add sudo support
+    && apt-get update \
+    && apt-get install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
+
+# Default user
+USER $USERNAME
