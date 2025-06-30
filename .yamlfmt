@@ -7,3 +7,6 @@ exclude:
     - nlohmann_json/.github/ISSUE_TEMPLATE/bug.yaml
     - nlohmann_json/docs/mkdocs/mkdocs.yml
     - nlohmann_json/.clang-tidy
+    - nlohmann_json/.github
+    - nlohmann_json/.cirrus.yml
+    - .clang-tidy

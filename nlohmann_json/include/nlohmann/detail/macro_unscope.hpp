@@ -10,7 +10,6 @@
 
 // restore clang diagnostic settings
 #if defined(__clang__)
-// NOLINTNEXTLINE(clang-diagnostic-unknown-pragmas)
     #pragma clang diagnostic pop
 #endif
 
@@ -36,7 +35,6 @@
     #undef JSON_HAS_CPP_17
     #undef JSON_HAS_CPP_20
     #undef JSON_HAS_CPP_23
-    #undef JSON_HAS_CPP_26
     #undef JSON_HAS_FILESYSTEM
     #undef JSON_HAS_EXPERIMENTAL_FILESYSTEM
     #undef JSON_HAS_THREE_WAY_COMPARISON

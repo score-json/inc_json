@@ -33,7 +33,7 @@ class sax_no_exception : public nlohmann::detail::json_sax_dom_parser<json, nloh
     static std::string* error_string;
 };
 
-inline std::string* sax_no_exception::error_string = nullptr;
+std::string* sax_no_exception::error_string = nullptr;
 
 TEST_CASE("Tests with disabled exceptions")
 {

@@ -11,7 +11,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-name: Gitlint check
+name: Linting Checks
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -60,6 +60,9 @@ jobs:
           ignore: 'tests'
           database: nlohmann_json/build/compile_commands.json
           version: 16
+          style: '' # deactivate style checks (nlohmann does not use a style guide)
+          tidy-checks: '' # use the .clang-tidy configuration file
+
 
       - name: Run linters on tests
         continue-on-error: true
@@ -71,6 +74,8 @@ jobs:
           ignore: 'src|include'
           database: nlohmann_json/build/compile_commands.json
           version: 16
+          style: '' # deactivate style checks (nlohmann does not use a style guide)
+          tidy-checks: '' # use the .clang-tidy configuration file
 
       - name: Report lint failure
         if: steps.source-linter.outputs.checks-failed > 0 || steps.test-linter.outputs.checks-failed > 0

@@ -74,3 +74,14 @@ pdflatex nlohmannjsonlibrary.tex
 ```
 
 Feel free to copy and use this Markdown format for your documentation purposes!
+
+## Integration of nlohmann_json library
+
+- Imported as a git subtree in folder nlohmann_json at the top-level of this repository
+- Initial version 3.12.0
+- All code is contained in this repository, so no special setup is needed unless you want to pull changes from nlohmann_json
+- Setup steps to pull changes from nlohmann_json:
+	- `git remote add nlohmann_json https://github.com/nlohmann/json.git`
+	- `git fetch nlohmann_json`
+	- Pull changes:
+		- `git subtree pull --prefix=nlohmann_json nlohmann_json versionX `

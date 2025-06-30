@@ -955,8 +955,7 @@ TEST_CASE("iterators 2")
                 };
                 json j_expected{"a_key", "b_key", "c_key"};
 
-                // NOLINTNEXTLINE(fuchsia-trailing-return)
-                auto transformed = j.items() | std::views::transform([](const auto & item) -> std::string_view
+                auto transformed = j.items() | std::views::transform([](const auto & item)
                 {
                     return item.key();
                 });

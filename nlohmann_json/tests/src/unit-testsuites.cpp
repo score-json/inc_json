@@ -10,9 +10,7 @@
 
 #include <nlohmann/json.hpp>
 using nlohmann::json;
-#include <iostream>
-#include <unistd.h>
-#include <sys/stat.h>
+
 #include <fstream>
 #include "make_test_data_available.hpp"
 
@@ -60,13 +58,6 @@ TEST_CASE("compliance tests from json.org")
                 })
         {
             CAPTURE(filename)
-            //std::cout << "CWD: " << getcwd(nullptr, 0) << std::endl;
-            //struct stat buffer;
-            //if (stat(filename, &buffer) == 0) {
-            //    std::cout << "File exists: " << filename << std::endl;
-            //} else {
-            //    std::cout << "File does NOT exist: " << filename << std::endl;
-            //}
             std::ifstream f(filename);
             json _;
             CHECK_THROWS_AS(_ = json::parse(f), json::parse_error&);
