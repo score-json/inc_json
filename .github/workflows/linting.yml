@@ -11,7 +11,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-name: Gitlint check
+name: Linting checks
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -29,7 +29,7 @@ jobs:
         uses: ./.github/actions/gitlint
         with:
           pr-number: ${{ github.event.number }}
-  clang-tidy:
+clang-tidy:
     name: Clang-Tidy Check
     runs-on: ubuntu-latest
     steps:
@@ -60,6 +60,9 @@ jobs:
           ignore: 'tests'
           database: nlohmann_json/build/compile_commands.json
           version: 16
+          style: google
+          tidy-checks = ''
+
 
       - name: Run linters on tests
         continue-on-error: true
@@ -71,6 +74,8 @@ jobs:
           ignore: 'src|include'
           database: nlohmann_json/build/compile_commands.json
           version: 16
+          style: 'google'
+          tidy-checks = ''
 
       - name: Report lint failure
         if: steps.source-linter.outputs.checks-failed > 0 || steps.test-linter.outputs.checks-failed > 0
