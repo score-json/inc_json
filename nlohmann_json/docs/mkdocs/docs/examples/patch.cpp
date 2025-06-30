@@ -1,22 +1,21 @@
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 using namespace nlohmann::literals;
 
-int main()
-{
-    // the original document
-    json doc = R"(
+int main() {
+  // the original document
+  json doc = R"(
         {
           "baz": "qux",
           "foo": "bar"
         }
     )"_json;
 
-    // the patch
-    json patch = R"(
+  // the patch
+  json patch = R"(
         [
           { "op": "replace", "path": "/baz", "value": "boo" },
           { "op": "add", "path": "/hello", "value": ["world"] },
@@ -24,10 +23,10 @@ int main()
         ]
     )"_json;
 
-    // apply the patch
-    json patched_doc = doc.patch(patch);
+  // apply the patch
+  json patched_doc = doc.patch(patch);
 
-    // output original and patched document
-    std::cout << std::setw(4) << doc << "\n\n"
-              << std::setw(4) << patched_doc << std::endl;
+  // output original and patched document
+  std::cout << std::setw(4) << doc << "\n\n"
+            << std::setw(4) << patched_doc << std::endl;
 }

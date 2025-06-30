@@ -1,15 +1,14 @@
-#include <iostream>
 #include <iomanip>
-#include <sstream>
+#include <iostream>
 #include <nlohmann/json.hpp>
+#include <sstream>
 
 using json = nlohmann::json;
 
-int main()
-{
-    // create stream with serialized JSON
-    std::stringstream ss;
-    ss << R"({
+int main() {
+  // create stream with serialized JSON
+  std::stringstream ss;
+  ss << R"({
         "number": 23,
         "string": "Hello, world!",
         "array": [1, 2, 3, 4, 5],
@@ -17,10 +16,10 @@ int main()
         "null": null
     })";
 
-    // create JSON value and read the serialization from the stream
-    json j;
-    ss >> j;
+  // create JSON value and read the serialization from the stream
+  json j;
+  ss >> j;
 
-    // serialize JSON
-    std::cout << std::setw(2) << j << '\n';
+  // serialize JSON
+  std::cout << std::setw(2) << j << '\n';
 }

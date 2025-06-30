@@ -1,13 +1,12 @@
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
-int main()
-{
-    // a JSON text
-    auto text = R"(
+int main() {
+  // a JSON text
+  auto text = R"(
     {
         "Image": {
             "Width":  800,
@@ -24,25 +23,22 @@ int main()
     }
     )";
 
-    // parse and serialize JSON
-    json j_complete = json::parse(text);
-    std::cout << std::setw(4) << j_complete << "\n\n";
+  // parse and serialize JSON
+  json j_complete = json::parse(text);
+  std::cout << std::setw(4) << j_complete << "\n\n";
 
-    // define parser callback
-    json::parser_callback_t cb = [](int depth, json::parse_event_t event, json & parsed)
-    {
-        // skip object elements with key "Thumbnail"
-        if (event == json::parse_event_t::key and parsed == json("Thumbnail"))
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    };
+  // define parser callback
+  json::parser_callback_t cb = [](int depth, json::parse_event_t event,
+                                  json &parsed) {
+    // skip object elements with key "Thumbnail"
+    if (event == json::parse_event_t::key and parsed == json("Thumbnail")) {
+      return false;
+    } else {
+      return true;
+    }
+  };
 
-    // parse (with callback) and serialize JSON
-    json j_filtered = json::parse(text, cb);
-    std::cout << std::setw(4) << j_filtered << '\n';
+  // parse (with callback) and serialize JSON
+  json j_filtered = json::parse(text, cb);
+  std::cout << std::setw(4) << j_filtered << '\n';
 }

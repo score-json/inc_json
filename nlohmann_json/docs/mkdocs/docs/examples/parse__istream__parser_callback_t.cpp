@@ -1,14 +1,13 @@
-#include <iostream>
 #include <iomanip>
-#include <sstream>
+#include <iostream>
 #include <nlohmann/json.hpp>
+#include <sstream>
 
 using json = nlohmann::json;
 
-int main()
-{
-    // a JSON text
-    auto text = R"(
+int main() {
+  // a JSON text
+  auto text = R"(
     {
         "Image": {
             "Width":  800,
@@ -25,33 +24,30 @@ int main()
     }
     )";
 
-    // fill a stream with JSON text
-    std::stringstream ss;
-    ss << text;
+  // fill a stream with JSON text
+  std::stringstream ss;
+  ss << text;
 
-    // parse and serialize JSON
-    json j_complete = json::parse(ss);
-    std::cout << std::setw(4) << j_complete << "\n\n";
+  // parse and serialize JSON
+  json j_complete = json::parse(ss);
+  std::cout << std::setw(4) << j_complete << "\n\n";
 
-    // define parser callback
-    json::parser_callback_t cb = [](int depth, json::parse_event_t event, json & parsed)
-    {
-        // skip object elements with key "Thumbnail"
-        if (event == json::parse_event_t::key and parsed == json("Thumbnail"))
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    };
+  // define parser callback
+  json::parser_callback_t cb = [](int depth, json::parse_event_t event,
+                                  json &parsed) {
+    // skip object elements with key "Thumbnail"
+    if (event == json::parse_event_t::key and parsed == json("Thumbnail")) {
+      return false;
+    } else {
+      return true;
+    }
+  };
 
-    // fill a stream with JSON text
-    ss.clear();
-    ss << text;
+  // fill a stream with JSON text
+  ss.clear();
+  ss << text;
 
-    // parse (with callback) and serialize JSON
-    json j_filtered = json::parse(ss, cb);
-    std::cout << std::setw(4) << j_filtered << '\n';
+  // parse (with callback) and serialize JSON
+  json j_filtered = json::parse(ss, cb);
+  std::cout << std::setw(4) << j_filtered << '\n';
 }

@@ -7,7 +7,4 @@
 #define Q(x) #x
 #define QUOTE(x) Q(x)
 
-int main()
-{
-    std::cout << QUOTE(NLOHMANN_JSON_NAMESPACE) << std::endl;
-}
+int main() { std::cout << QUOTE(NLOHMANN_JSON_NAMESPACE) << std::endl; }

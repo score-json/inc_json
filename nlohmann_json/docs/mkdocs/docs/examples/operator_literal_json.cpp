@@ -1,13 +1,12 @@
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 using namespace nlohmann::literals;
 
-int main()
-{
-    json j = R"( {"hello": "world", "answer": 42} )"_json;
+int main() {
+  json j = R"( {"hello": "world", "answer": 42} )"_json;
 
-    std::cout << std::setw(2) << j << '\n';
+  std::cout << std::setw(2) << j << '\n';
 }

@@ -3,18 +3,14 @@
 
 using json = nlohmann::json;
 
-int main()
-{
-    try
-    {
-        // parsing input with a syntax error
-        json::parse("[1,2,3,]");
-    }
-    catch (const json::parse_error& e)
-    {
-        // output exception information
-        std::cout << "message: " << e.what() << '\n'
-                  << "exception id: " << e.id << '\n'
-                  << "byte position of error: " << e.byte << std::endl;
-    }
+int main() {
+  try {
+    // parsing input with a syntax error
+    json::parse("[1,2,3,]");
+  } catch (const json::parse_error &e) {
+    // output exception information
+    std::cout << "message: " << e.what() << '\n'
+              << "exception id: " << e.id << '\n'
+              << "byte position of error: " << e.byte << std::endl;
+  }
 }

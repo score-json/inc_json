@@ -103,4 +103,9 @@
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
+    "files.associations": {
+        "type_traits": "cpp",
+        "cstddef": "cpp",
+        "functional": "cpp"
+    },
 }

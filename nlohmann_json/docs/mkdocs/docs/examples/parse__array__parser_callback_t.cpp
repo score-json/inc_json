@@ -1,13 +1,12 @@
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
-int main()
-{
-    // a JSON text
-    char text[] = R"(
+int main() {
+  // a JSON text
+  char text[] = R"(
     {
         "Image": {
             "Width":  800,
@@ -24,7 +23,7 @@ int main()
     }
     )";
 
-    // parse and serialize JSON
-    json j_complete = json::parse(text);
-    std::cout << std::setw(4) << j_complete << "\n\n";
+  // parse and serialize JSON
+  json j_complete = json::parse(text);
+  std::cout << std::setw(4) << j_complete << "\n\n";
 }
