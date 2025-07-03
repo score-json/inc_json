@@ -33,48 +33,84 @@ This repository provides the aspired setup for projects using **C++** and **Baze
    :glob:
 
    introduction/index.rst
-   trustable/index.rst
+   trustable/concept.rst
    trustable/tenets/index.rst
+   trustable/report.rst
    Eclipse <https://projects.eclipse.org/projects/automotive.score>
 
-Requirements
-------------
+General Requirements
+--------------------
 
-.. stkh_req:: Correct JSON Parsing
-   :id: stkh_req__json_parsing_accuracy__core_lib
-   :status: valid
-   :safety: QM
+.. comp_req:: JSON Validation
+   :id: comp_req__json__validation
    :reqtype: Functional
-   :rationale: Ensure the library accurately parses JSON strings into their corresponding data structures, accommodating both common and edge cases.
-
-.. stkh_req:: Efficient Serialization
-   :id: stkh_req__serialization_efficiency__core_lib
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__baselibs__json_library
    :status: valid
-   :safety: QM
+
+   The JSON-Library provides a service to check the well-formedness of JSON data.
+
+.. comp_req:: JSON Deserialization
+   :id: comp_req__json__deserialization
    :reqtype: Functional
-   :rationale: Guarantee that the library performs serialization operations swiftly, minimizing processing time and resource consumption.
-
-.. stkh_req:: Comprehensive Testing
-   :id: stkh_req__test_coverage__testing_module
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__baselibs__json_library
    :status: valid
-   :safety: QM
+
+   The JSON-Library parses JSON data according to RFC8259.
+
+User friendly API for information exchange
+-------------------------------------------
+
+.. comp_req:: Support for programming language idioms
+   :id: comp_req__json__lang_idioms
    :reqtype: Non-Functional
-   :rationale: Achieve 100% test coverage in unit and integration tests, including verification against memory leaks using tools like Valgrind and Clang Sanitizers.
-
-.. stkh_req:: Fuzz Testing Compliance
-   :id: stkh_req__fuzz_testing__testing_module
-   :status: valid
+   :security: NO
    :safety: QM
+   :satisfies: feat_req__baselibs__json_library
+   :status: valid
+
+   Each public API supports the idioms of its programming language.
+
+.. comp_req:: Use programming language infrastructure
+   :id: comp_req__json__lang_infra
    :reqtype: Non-Functional
-   :rationale: Integrate continuous fuzz testing to detect vulnerabilities, executing extensive test scenarios as part of a broader security strategy.
-
-.. stkh_req:: Adherence to Apache License 2.0
-   :id: stkh_req__license_compliance__core_lib
-   :status: valid
+   :security: NO
    :safety: QM
-   :reqtype: Legal
-   :rationale: Ensure all aspects of the library, including contributions and modifications, adhere to the terms specified under the Apache License Version 2.0.
+   :satisfies: feat_req__baselibs__json_library
+   :status: valid
 
+   Each public API uses core infrastructure of its programming language and accompanying standard libraries, whenever possible and meaningful.
+
+   Note: This includes error handling.
+
+Full testability for the user facing API
+-----------------------------------------
+
+.. comp_req:: Fully mockable public API
+   :id: comp_req__json__testability_mock_api
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :satisfies: feat_req__baselibs__json_library
+   :status: valid
+
+   The public API is fully mockable.
+
+Safety Impact
+--------------
+
+.. comp_req:: JSON library ASIL level
+   :id: comp_req__json__asil
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :satisfies: feat_req__baselibs__json_library
+   :status: valid
+
+   The JSON library supports safe communication up to ASIL-B.
 
 
 Project Layout
