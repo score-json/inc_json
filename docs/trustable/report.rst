@@ -32,7 +32,7 @@ Compliance for TA
    * - TA-ANALYSIS
      - Collected data from tests and monitoring of deployed software is analysed according to specified objectives.
      - 0.00
-   * - :doc:`tenets/TT-EXPECTATIONS/TA-BEHAVIOURS`
+   * - :doc:`assertions/TA-BEHAVIOURS`
      - Expected or required behaviours for json library are identified, specified, verified and validated based on analysis.
      - 0.00
    * - TA-CONFIDENCE
@@ -59,7 +59,7 @@ Compliance for TA
    * - TA-METHODOLOGIES
      - Manual methodologies applied for json library by contributors, and their results, are managed according to specified objectives.
      - 0.00
-   * - :doc:`tenets/TT-EXPECTATIONS/TA-MISBEHAVIOURS`
+   * - :doc:`assertions/TA-MISBEHAVIOURS`
      - Prohibited misbehaviours for json library are identified, and mitigations are specified, verified and validated based on analysis.
      - 0.00
    * - TA-RELEASES
@@ -68,7 +68,7 @@ Compliance for TA
    * - TA-SUPPLY_CHAIN
      - All sources for json library and tools are mirrored in our controlled environment.
      - 0.00
-   * - :doc:`tenets/TT-CONSTRUCTION/TA-TESTS`
+   * - :doc:`assertions/TA-TESTS`
      - All tests for json library, and its build and test environments, are constructed from controlled/mirrored sources and are reproducible, with any exceptions documented.
      - 0.00
    * - TA-UPDATES
@@ -102,21 +102,21 @@ Compliance for TT
    * - Item
      - Summary
      - Score
-   * - :doc:`tenets/TT-CHANGES/index`
+   * - :doc:`tenets/TT-CHANGES`
      - Json library is actively maintained, with regular updates to dependencies, and changes are verified to prevent regressions.
      - 0.00
-   * - :doc:`tenets/TT-CONFIDENCE/index`
+   * - :doc:`tenets/TT-CONFIDENCE`
      - Confidence in json library is measured by analysing actual performance in tests and in production.
      - 0.00
-   * - :doc:`tenets/TT-CONSTRUCTION/index`
+   * - :doc:`tenets/TT-CONSTRUCTION`
      - Tools are provided to build json library from trusted sources (also provided) with full reproducibility.
      - 0.00
-   * - :doc:`tenets/TT-EXPECTATIONS/index`
+   * - :doc:`tenets/TT-EXPECTATIONS`
      - Documentation is provided, specifying what json library is expected to do, and what it must not do, and how this is verified.
      - 0.00
-   * - :doc:`tenets/TT-PROVENANCE/index`
+   * - :doc:`tenets/TT-PROVENANCE`
      - All inputs (and attestations for claims) for json library are provided with known provenance.
      - 0.00
-   * - :doc:`tenets/TT-RESULTS/index`
+   * - :doc:`tenets/TT-RESULTS`
      - Evidence is provided to demonstrate that json library does what it is supposed to do, and does not do what it must not do.
      - 0.00
