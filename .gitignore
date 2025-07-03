@@ -42,6 +42,7 @@ user.bazelrc
 
 # docs:incremental and docs:ide_support build artifacts
 /_build
+/build
 
 # Vale - editorial style guide
 .vale.ini
