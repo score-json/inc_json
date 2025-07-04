@@ -22,9 +22,9 @@ Trustable Tenets
    :caption: Trustable Tenets
    :glob:
 
-   TT-PROVENANCE/index
-   TT-CONSTRUCTION/index
-   TT-CHANGES/index
-   TT-EXPECTATIONS/index
-   TT-RESULTS/index
-   TT-CONFIDENCE/index
+   TT-PROVENANCE
+   TT-CONSTRUCTION
+   TT-CHANGES
+   TT-EXPECTATIONS
+   TT-RESULTS
+   TT-CONFIDENCE
