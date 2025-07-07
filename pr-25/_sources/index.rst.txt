@@ -36,6 +36,7 @@ This repository provides the aspired setup for projects using **C++** and **Baze
    trustable/concept.rst
    trustable/tenets/index.rst
    trustable/report.rst
+   trustable/trudag_report.rst
    Eclipse <https://projects.eclipse.org/projects/automotive.score>
 
 General Requirements
