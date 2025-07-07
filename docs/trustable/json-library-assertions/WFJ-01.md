@@ -6,7 +6,7 @@ references:
       path: "nlohmann_json/tests/src/unit-class_parser.cpp"
     - type: "cpp-test"
       path: "nlohmann_json/tests/src/unit-class_parser.cpp"
-      test_name: "parse"
+test_name: "parse"
 score:
     Lennart: 1.0
 ---
