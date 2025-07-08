@@ -3,19 +3,16 @@ import re
 import subprocess
 import shutil
 
-# Directory containing the .rst files (directory of the script itself)
-DIRECTORY = os.path.dirname(os.path.abspath(__file__))  # Path to the folder containing the Python file
+# Path to the folder containing the Python file
+DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 
+# Convert all .md files in the input directory to .rst files using m2r2
+# and move them to the output directory.
+# Args:
+#     input_dir (str): Directory containing the .md files.
+#     output_dir (str): Directory to move the converted .rst files to.
 def convert_and_move_md_files(input_dir, output_dir):
-    """
-    Convert all .md files in the input directory to .rst files using m2r2
-    and move them to the output directory.
-
-    Args:
-        input_dir (str): Directory containing the .md files.
-        output_dir (str): Directory to move the converted .rst files to.
-    """
     # Ensure the output directory exists
     os.makedirs(output_dir, exist_ok=True)
 
@@ -36,9 +33,12 @@ def convert_and_move_md_files(input_dir, output_dir):
             # Move the .rst file to the output directory
             if os.path.exists(rst_file_path):
                 shutil.move(rst_file_path, os.path.join(output_dir, rst_file_name))
-                print(f"Converted and moved: {md_file_path} -> {os.path.join(output_dir, rst_file_name)}")
+                print(
+                    f"Converted and moved: {md_file_path} -> {os.path.join(output_dir, rst_file_name)}"
+                )
             else:
                 print(f"Error: Expected .rst file not found for {md_file_path}")
+
 
 # Function to clean ".item-element" lines and remove content between {...}
 def clean_item_element_references(directory):
@@ -67,7 +67,6 @@ def clean_item_element_references(directory):
 
 def add_sections_and_headers(directory):
     print("Adding sections and rearranging headers...")
-
     for filename in os.listdir(directory):
         if filename.endswith(".rst"):  # Process only .rst files
             file_path = os.path.join(directory, filename)
@@ -93,7 +92,8 @@ def add_sections_and_headers(directory):
                 # Match lines containing uppercase words with optional ### and symbols like _
                 # E.g., TA-ANALYSIS ###, TT-CHANGES ###, TA-SUPPLY_CHAIN ###, etc.
                 match = re.match(r"^([A-Z0-9\-_]+)(\s*###)?$", line.strip())
-                if match and i + 1 < len(lines):  # Verify the next line exists for the ^^^ line
+                # Verify the next line exists for the ^^^ line
+                if match and i + 1 < len(lines):
                     next_line = lines[i + 1].strip()
 
                     # Check if the next line is all ^^^ (or longer)
@@ -105,12 +105,12 @@ def add_sections_and_headers(directory):
                         if section_reference not in existing_references:
                             # Add two blank lines and a section declaration above the line
                             processed_lines.append("\n\n")  # Two blank lines
-                            processed_lines.append(f".. _{section_reference}:\n")  # Add section reference
+                            processed_lines.append(f".. _{section_reference}:\n")
                             processed_lines.append("\n")  # Additional blank line
 
                         # Add the original title without the ###
                         processed_lines.append(f"{section_name}\n")
-                        processed_lines.append(next_line + "\n")  # Add the separator line
+                        processed_lines.append(next_line + "\n")
 
                         # Skip to the line after the ^^^ line
                         i += 2
@@ -145,7 +145,7 @@ def replace_markdown_references(directory):
                 line = re.sub(
                     r"`.*?<.*?#([\w\-_.]+)>`_",  # Match the structure, including backticks and trailing _
                     r":ref:`\1`",  # Replace it with the Sphinx :ref: format
-                    line
+                    line,
                 )
                 processed_lines.append(line)
 
@@ -157,7 +157,6 @@ def replace_markdown_references(directory):
 
 def rewrite_trudag_report(nav_file_path, trudag_report_path):
     print(f"Rewriting file: {trudag_report_path} based on: {nav_file_path}")
-
     # Read the content of nav.rst
     try:
         with open(nav_file_path, "r") as nav_file:
@@ -216,9 +215,9 @@ Trudag Report
     except Exception as e:
         print(f"Error writing to file {trudag_report_path}: {e}")
 
+
 def add_missing_headers(directory):
     print("Adding headers to .rst files where missing...")
-
     # Process each file in the directory
     for filename in os.listdir(directory):
         if filename.endswith(".rst"):  # Only process .rst files
@@ -273,7 +272,9 @@ if __name__ == "__main__":
     replace_markdown_references(DIRECTORY)
 
     # Update trudag_report.rst based on nav.rst
-    nav_file_path = rewrite_trudag_report(DIRECTORY + "/nav.rst", "/workspaces/inc_json/docs/trustable/trudag_report.rst")
+    nav_file_path = rewrite_trudag_report(
+        DIRECTORY + "/nav.rst", "/workspaces/inc_json/docs/trustable/trudag_report.rst"
+    )
 
-    #Add missing headers to .rst files
+    # Add missing headers to .rst files
     add_missing_headers(DIRECTORY)
