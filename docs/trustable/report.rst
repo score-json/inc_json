@@ -120,3 +120,37 @@ Compliance for TT
    * - :doc:`tenets/TT-RESULTS/index`
      - Evidence is provided to demonstrate that json library does what it is supposed to do, and does not do what it must not do.
      - 0.00
+
+
+Assumptions of Use
+###################
+
+.. list-table:: Assumptions of Use
+   :widths: 15 85
+   :header-rows: 1
+
+   * - Id
+     - Summary
+   * - AoU-01
+     - Problems with nlohmann_json's implementation identified during testing are reported to the upstream nlohmann_json project.
+   * - AoU-02
+     - The build environment used for nlohmann_json in an integrating system is supplied with consistent dependencies.
+   * - AoU-03
+     - The build process must use Integrator-controlled mirrors rather than pulling dependencies from the internet at build-time.
+   * - AoU-04
+     - Exceptions are properly handled or turned off:
+
+       - All exceptions (``json::parse_error``, ``json::invalid_iterator``, ``json::type_error``, ``json::out_of_range``, ``json::other_error``) inherit from ``json::exception``.
+       - The nlohman_json library uses ``JSON_TRY``, ``JSON_CATCH``, etc., macros instead of the exception keywords ``try``, ``catch``, etc., which may be overwritten to suppress exceptions.
+       - Each keyword can be individually overwritten (e.g. ``#define JSON_THROW(exception) std::abort()``) or all keywords can be changed by setting ``#define JSON_NOEXCEPTION`` to suppress exceptions.
+       - Alternatively, the ``accept`` function may be used to check JSON validity, as it only throws an exception for an empty input. In the case of invalid JSON, ``false`` is returned, and no exception occurs. The ``parse`` function also has a parameter ``allow_exceptions`` to turn off parse error exceptions.
+       - See:
+        - `nlohman_json: JSON_NOEXCEPTION Macro <https://json.nlohmann.me/api/macros/json_noexception/>`_
+        - `nlohman_json: Switch Off Exceptions <https://json.nlohmann.me/home/exceptions/#switch-off-exceptions>`_
+
+   * - AoU-05
+     - Input has to be encoded as UTF-8 (as required by RFC8259). In case other string formats are used the parse or dump function may throw an exception.
+   * - AoU-06
+     - To avoid any confusion and ensure portable code, brace initialization (e.g. json j{true};) should not be used with the types basic_json, json, or ordered_json unless you want to create an object or array.
+   * - AoU-07
+     - If the input is no valid JSON, exceptions should be expected during parsing with default parameters.
