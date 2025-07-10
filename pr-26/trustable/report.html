@@ -623,10 +623,14 @@
 <td><p>The build environment used for nlohmann_json in an integrating system is supplied with consistent dependencies.</p></td>
 </tr>
 <tr class="row-even"><td><p>AoU-03</p></td>
-<td><p>The build process must use Integrator-controlled mirrors rather than pulling dependencies from the internet at build-time.</p></td>
+<td><p>The integrator has Integrator-controlled mirrors of the dependencies.</p></td>
 </tr>
 <tr class="row-odd"><td><p>AoU-04</p></td>
+<td><p>The system is built with the S-Core bazel build pipeline.</p></td>
+</tr>
+<tr class="row-even"><td><p>AoU-05</p></td>
 <td><p>Exceptions are properly handled or turned off:</p>
+<p>Context:</p>
 <ul class="simple">
 <li><p>All exceptions (<code class="docutils literal notranslate"><span class="pre">json::parse_error</span></code>, <code class="docutils literal notranslate"><span class="pre">json::invalid_iterator</span></code>, <code class="docutils literal notranslate"><span class="pre">json::type_error</span></code>, <code class="docutils literal notranslate"><span class="pre">json::out_of_range</span></code>, <code class="docutils literal notranslate"><span class="pre">json::other_error</span></code>) inherit from <code class="docutils literal notranslate"><span class="pre">json::exception</span></code>.</p></li>
 <li><p>The nlohman_json library uses <code class="docutils literal notranslate"><span class="pre">JSON_TRY</span></code>, <code class="docutils literal notranslate"><span class="pre">JSON_CATCH</span></code>, etc., macros instead of the exception keywords <code class="docutils literal notranslate"><span class="pre">try</span></code>, <code class="docutils literal notranslate"><span class="pre">catch</span></code>, etc., which may be overwritten to suppress exceptions.</p></li>
@@ -642,14 +646,14 @@
 </div></blockquote>
 </td>
 </tr>
-<tr class="row-even"><td><p>AoU-05</p></td>
-<td><p>Input has to be encoded as UTF-8 (as required by RFC8259). In case other string formats are used the parse or dump function may throw an exception.</p></td>
-</tr>
 <tr class="row-odd"><td><p>AoU-06</p></td>
-<td><p>To avoid any confusion and ensure portable code, brace initialization (e.g. json j{true};) should not be used with the types basic_json, json, or ordered_json unless you want to create an object or array.</p></td>
+<td><p>Input is encoded as UTF-8 (as required by RFC8259) and in case other string formats are used, it is expected that the parse or dump function may throw an exception.</p></td>
 </tr>
 <tr class="row-even"><td><p>AoU-07</p></td>
-<td><p>If the input is no valid JSON, exceptions should be expected during parsing with default parameters.</p></td>
+<td><p>Brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json unless you want to create an object or array.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AoU-08</p></td>
+<td><p>If the input is no valid JSON, exceptions are expected during parsing with default parameters.</p></td>
 </tr>
 </tbody>
 </table>
