@@ -602,6 +602,63 @@
 </table>
 </div>
 </section>
+<section id="assumptions-of-use">
+<h2>Assumptions of Use<a class="headerlink" href="#assumptions-of-use" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id5">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Assumptions of Use</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 85.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Id</p></th>
+<th class="head"><p>Summary</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AoU-01</p></td>
+<td><p>Problems with nlohmann_json’s implementation identified during testing are reported to the upstream nlohmann_json project.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AoU-02</p></td>
+<td><p>The build environment used for nlohmann_json in an integrating system is supplied with consistent dependencies.</p></td>
+</tr>
+<tr class="row-even"><td><p>AoU-03</p></td>
+<td><p>The integrator has Integrator-controlled mirrors of the dependencies.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AoU-04</p></td>
+<td><p>The system is built with the S-Core bazel build pipeline.</p></td>
+</tr>
+<tr class="row-even"><td><p>AoU-05</p></td>
+<td><p>Exceptions are properly handled or turned off:</p>
+<p>Context:</p>
+<ul class="simple">
+<li><p>All exceptions (<code class="docutils literal notranslate"><span class="pre">json::parse_error</span></code>, <code class="docutils literal notranslate"><span class="pre">json::invalid_iterator</span></code>, <code class="docutils literal notranslate"><span class="pre">json::type_error</span></code>, <code class="docutils literal notranslate"><span class="pre">json::out_of_range</span></code>, <code class="docutils literal notranslate"><span class="pre">json::other_error</span></code>) inherit from <code class="docutils literal notranslate"><span class="pre">json::exception</span></code>.</p></li>
+<li><p>The nlohman_json library uses <code class="docutils literal notranslate"><span class="pre">JSON_TRY</span></code>, <code class="docutils literal notranslate"><span class="pre">JSON_CATCH</span></code>, etc., macros instead of the exception keywords <code class="docutils literal notranslate"><span class="pre">try</span></code>, <code class="docutils literal notranslate"><span class="pre">catch</span></code>, etc., which may be overwritten to suppress exceptions.</p></li>
+<li><p>Each keyword can be individually overwritten (e.g. <code class="docutils literal notranslate"><span class="pre">#define</span> <span class="pre">JSON_THROW(exception)</span> <span class="pre">std::abort()</span></code>) or all keywords can be changed by setting <code class="docutils literal notranslate"><span class="pre">#define</span> <span class="pre">JSON_NOEXCEPTION</span></code> to suppress exceptions.</p></li>
+<li><p>Alternatively, the <code class="docutils literal notranslate"><span class="pre">accept</span></code> function may be used to check JSON validity, as it only throws an exception for an empty input. In the case of invalid JSON, <code class="docutils literal notranslate"><span class="pre">false</span></code> is returned, and no exception occurs. The <code class="docutils literal notranslate"><span class="pre">parse</span></code> function also has a parameter <code class="docutils literal notranslate"><span class="pre">allow_exceptions</span></code> to turn off parse error exceptions.</p></li>
+<li><p>See:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://json.nlohmann.me/api/macros/json_noexception/">nlohman_json: JSON_NOEXCEPTION Macro</a></p></li>
+<li><p><a class="reference external" href="https://json.nlohmann.me/home/exceptions/#switch-off-exceptions">nlohman_json: Switch Off Exceptions</a></p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p>AoU-06</p></td>
+<td><p>Input is encoded as UTF-8 (as required by RFC8259) and in case other string formats are used, it is expected that the parse or dump function may throw an exception.</p></td>
+</tr>
+<tr class="row-even"><td><p>AoU-07</p></td>
+<td><p>Brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json unless you want to create an object or array.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AoU-08</p></td>
+<td><p>If the input is no valid JSON, exceptions are expected during parsing with default parameters.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 
 
@@ -645,6 +702,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-for-ta">Compliance for TA</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-for-trustable">Compliance for TRUSTABLE</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-for-tt">Compliance for TT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-of-use">Assumptions of Use</a></li>
 </ul>
   </nav></div>
 
