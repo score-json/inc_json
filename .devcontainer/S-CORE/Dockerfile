@@ -32,7 +32,7 @@ RUN apt-get update && \
         python3 \
         python3-pip \
         python3-venv \
-        # pipx \
+        pipx \
         locales \
         ssh-client \
     && apt-get clean && \
@@ -85,3 +85,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 # Default user
 USER $USERNAME
+
+# Install trudag using pipx
+RUN pipx install trustable --index-url https://gitlab.com/api/v4/projects/66600816/packages/pypi/simple && \
+    pipx ensurepath

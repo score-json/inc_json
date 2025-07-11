@@ -22,5 +22,5 @@ TT-EXPECTATIONS
    :caption: TT-EXPECTATIONS
    :glob:
 
-   TA-BEHAVIOURS
-   TA-MISBEHAVIOURS
+   ../assertions/TA-BEHAVIOURS
+   ../assertions/TA-MISBEHAVIOURS

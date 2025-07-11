@@ -12,19 +12,19 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _documentation:
+.. _trudag_report:
 
-Trustable Tenets
+Trudag Report
 =================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Trustable Tenets
+   :caption: Trudag Report
    :glob:
 
-   TT-PROVENANCE
-   TT-CONSTRUCTION
-   TT-CHANGES
-   TT-EXPECTATIONS
-   TT-RESULTS
-   TT-CONFIDENCE
+   trudag/m2r2_test/trustable_report_for_json_library
+   trudag/m2r2_test/dashboard
+   trudag/m2r2_test/TA
+   trudag/m2r2_test/TRUSTABLE
+   trudag/m2r2_test/TT
+   trudag/m2r2_test/WFJ

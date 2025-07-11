@@ -22,4 +22,4 @@ TT-CONSTRUCTION
    :caption: TT-CONSTRUCTION
    :glob:
 
-   TA-TESTS
+   ../assertions/TA-TESTS
